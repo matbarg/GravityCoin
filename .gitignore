@@ -100,3 +100,6 @@ InitTestScene*.unity*
 
 # .idea
 .idea/
+.DS_Store
+.vscode/
+*.slnx
