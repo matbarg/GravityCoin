@@ -147,7 +147,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -158,7 +158,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -169,7 +169,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -180,7 +180,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -213,7 +213,7 @@
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -235,7 +235,7 @@
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -268,7 +268,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -312,7 +312,7 @@
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardLeft",
+                    "groups": "KeyBoardLeft",
                     "action": "Pushen",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -322,8 +322,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "KeyboardLeft",
-            "bindingGroup": "KeyboardLeft",
+            "name": "KeyBoardLeft",
+            "bindingGroup": "KeyBoardLeft",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
