@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    private float gravityDirection = 1f; // 1 = normal, -1 = inverted
 
     void Update()
     {
@@ -33,10 +34,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && IsGrounded())
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower * gravityDirection);
         }
 
-        if (context.canceled && rb.linearVelocity.y > 0f)
+        if (context.canceled && rb.linearVelocity.y * gravityDirection > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
@@ -44,7 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        Vector2 direction = Vector2.down * gravityDirection; 
+        Vector2 checkPosition = (Vector2)groundCheck.position + direction * 0.1f; 
+        return Physics2D.OverlapCircle(checkPosition, 0.2f, groundLayer);
     }
 
     private void Flip()
@@ -54,9 +57,27 @@ public class PlayerMovement : MonoBehaviour
         localScale.x *= -1f;
         transform.localScale = localScale;
     }
+    
+    private void FlipVertical()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.y *= -1f;
+        transform.localScale = localScale;
+    }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+    }
+    
+    public void SwitchGravity(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            gravityDirection *= -1f;
+            rb.gravityScale *= -1f;
+
+            FlipVertical();
+        }
     }
 }
