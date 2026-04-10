@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+
 
 public class JamLobbyManager : MonoBehaviour
 {
@@ -7,7 +9,13 @@ public class JamLobbyManager : MonoBehaviour
     private bool keyboardLeftJoined = false;
     private bool keyboardRightJoined = false;
 
+
+    public List<PlayerInput> players = new List<PlayerInput>();
+
+    
     void Start()
+
+    
     {
         manager = GetComponent<PlayerInputManager>();
      
@@ -18,7 +26,9 @@ public class JamLobbyManager : MonoBehaviour
         // 1. Check für Tastatur Links (WASD) -> Drücke 'W' zum Beitreten
         if (!keyboardLeftJoined && Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
         {
-            manager.JoinPlayer(-1, -1, "KeyBoardLeft", Keyboard.current);
+            PlayerInput p = manager.JoinPlayer(-1, -1, "KeyBoardLeft", Keyboard.current);
+            AddPlayerToList(p);
+
             keyboardLeftJoined = true;
             Debug.Log("Player 1 (Keyboard Left) joined!");
         }
@@ -26,7 +36,8 @@ public class JamLobbyManager : MonoBehaviour
         // 2. Check für Tastatur Rechts (Pfeile) -> Drücke 'UpArrow' zum Beitreten
         if (!keyboardRightJoined && Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
-            manager.JoinPlayer(-1, -1, "KeyBoardRight", Keyboard.current);
+            PlayerInput p = manager.JoinPlayer(-1, -1, "KeyBoardRight", Keyboard.current);
+            AddPlayerToList(p);
             keyboardRightJoined = true;
             Debug.Log("Player 2 (Keyboard Right) joined!");
         }
@@ -39,14 +50,16 @@ public class JamLobbyManager : MonoBehaviour
                 // Wir prüfen, ob dieser Controller schon vergeben ist
                 if (!IsDeviceAlreadyUsed(gamepad))
                 {
-                    manager.JoinPlayer(-1, -1, "Gamepad", gamepad);
+                    PlayerInput p = manager.JoinPlayer(-1, -1, "Gamepad", gamepad);
+                    AddPlayerToList(p);
                     Debug.Log("Controller Player joined!");
                 }
             }
         }
     }
+    
 
-    // Hilfsfunktion: Prüft, ob ein Gerät schon einem Spieler gehört
+    
     private bool IsDeviceAlreadyUsed(InputDevice device)
     {
         foreach (var player in PlayerInput.all)
@@ -58,4 +71,13 @@ public class JamLobbyManager : MonoBehaviour
         }
         return false;
     }
+    private void AddPlayerToList(PlayerInput pi)
+    {
+        if (pi != null)
+        {
+            players.Add(pi);
+        }
+    }
+
+
 }
