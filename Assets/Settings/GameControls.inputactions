@@ -209,6 +209,17 @@
                 },
                 {
                     "name": "",
+                    "id": "18adb699-1abc-400b-9c80-742fbf1be3c7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8b57518c-e957-4216-a893-a617c9703f4e",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
