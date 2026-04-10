@@ -478,6 +478,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792070505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7142203662417495887, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+  m_PrefabInstance: {fileID: 4566230545812320402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7aa987e97c8d47878d5dcdcf5c8a2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &4566230545812320402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +540,110 @@ PrefabInstance:
     - target: {fileID: 4756779142634574202, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 9e39fe9880e7f42018e2ddf79899362b, type: 3}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: 7328bd77-6b77-4c96-8600-04fecbf285d4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: ffd5fe1a-fe73-447c-b765-811c7102253c
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 856f1b01-b5ad-402e-a2d1-55902a1966a5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 1cf354fd-bbf7-4f98-8be5-c0f546aff069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 58feb81a-906b-4acc-9c4e-1ee98e0b43f4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: 'Player/Move[/DualShock4GamepadHID/dpad,/DualShock4GamepadHID/leftStick]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: 'Player/Jump[/DualShock4GamepadHID/buttonSouth]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: 'Player/Switch[/DualShock4GamepadHID/leftShoulder]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: 'Player/Bomb[/DualShock4GamepadHID/rightShoulder]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Player/Pushen[/DualShock4GamepadHID/buttonWest]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 792070505}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 792070505}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189959843464085873, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
