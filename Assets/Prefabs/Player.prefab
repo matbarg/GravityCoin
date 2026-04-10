@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4184745545214933596}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7142203662417495887}
   - component: {fileID: 6189959843464085873}
   - component: {fileID: 1016492118817838907}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,11 +63,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.008726465, w: 0.999962}
   m_LocalPosition: {x: 0, y: 2, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4184745545214933596}
   - {fileID: 865992366720379262}
+  - {fileID: 4401409271506971197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1}
 --- !u!212 &1403897534836102410
@@ -271,7 +272,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 7328bd77-6b77-4c96-8600-04fecbf285d4
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+    m_ActionName: 'Player/Move[/DualShock4GamepadHID/dpad,/DualShock4GamepadHID/leftStick]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7142203662417495887}
@@ -287,7 +288,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: ffd5fe1a-fe73-447c-b765-811c7102253c
-    m_ActionName: 'Player/Jump[/Keyboard/space]'
+    m_ActionName: 'Player/Jump[/DualShock4GamepadHID/buttonSouth]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7142203662417495887}
@@ -303,15 +304,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 856f1b01-b5ad-402e-a2d1-55902a1966a5
-    m_ActionName: 'Player/Switch[/Keyboard/shift]'
+    m_ActionName: 'Player/Switch[/DualShock4GamepadHID/leftShoulder]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 1cf354fd-bbf7-4f98-8be5-c0f546aff069
-    m_ActionName: Player/Bomb
+    m_ActionName: 'Player/Bomb[/DualShock4GamepadHID/rightShoulder]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 58feb81a-906b-4acc-9c4e-1ee98e0b43f4
-    m_ActionName: Player/Pushen
+    m_ActionName: 'Player/Pushen[/DualShock4GamepadHID/buttonWest]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -340,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865992366720379262}
   - component: {fileID: 7713364825727612989}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +410,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.3523051, g: 0.53444, b: 0.8584906, a: 1}
@@ -421,3 +422,65 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &1346689949959131054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3764650413000385903}
+    m_Modifications:
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.17647061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433032877048047004, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+      propertyPath: m_Name
+      value: player_animation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+--- !u!4 &4401409271506971197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3433032877048046995, guid: 855bc2afcd9e44594b4019afb443b9c2, type: 3}
+  m_PrefabInstance: {fileID: 1346689949959131054}
+  m_PrefabAsset: {fileID: 0}

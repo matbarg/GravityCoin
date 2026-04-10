@@ -10,11 +10,22 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
-    private bool isFacingRight = true;
+    private bool isFacingRight = false;
     private float gravityDirection = 1f; // 1 = normal, -1 = inverted
+    private bool isGrounded;
 
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+    
     void Update()
     {
+        animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        animator.SetBool("IsGrounded", isGrounded);
+        
         if (!isFacingRight && horizontal > 0f)
         {
             Flip();
@@ -28,13 +39,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        isGrounded = IsGrounded();
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded())
+        if (context.performed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower * gravityDirection);
+            animator.SetTrigger("Jump");
         }
 
         if (context.canceled && rb.linearVelocity.y * gravityDirection > 0f)
@@ -78,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale *= -1f;
 
             FlipVertical();
+            
+            animator.SetTrigger("Jump");
         }
     }
 }
