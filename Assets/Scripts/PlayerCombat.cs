@@ -12,6 +12,9 @@ public class PlayerCombat : MonoBehaviour
     public int coinsLostOnHit = 2;
     [SerializeField] private GameObject hitboxVisual;
 	private bool isHitStopped = false;
+    [Header("Audio")]
+    public AudioSource audioSource; // Der Lautsprecher am Spieler
+    public AudioClip swingSound;
 
     void Awake()
     {
@@ -35,7 +38,10 @@ public class PlayerCombat : MonoBehaviour
         if (!context.performed || isAttacking) return;
         
         isAttacking = true;
-        
+        if (audioSource != null && swingSound != null)
+            {
+                audioSource.PlayOneShot(swingSound);
+            } 
         Debug.Log("Attack!");
         animator.SetTrigger("Attack");
     }

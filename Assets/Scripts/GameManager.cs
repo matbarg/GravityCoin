@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public TextMeshProUGUI winText;
 
+    [Header("Audio")]
+    public AudioSource audioSource; 
+    public AudioClip winSound;
+
     void Awake()
     {
         // Initialisierung des Singletons
@@ -24,6 +28,10 @@ public class GameManager : MonoBehaviour
     {
         if (winPanel != null)
         {
+            if (audioSource != null && winSound != null)
+            {
+                audioSource.PlayOneShot(winSound);
+            }
             winPanel.SetActive(true);
             winText.text = $"Player {playerIndex + 1} wins!";
             Time.timeScale = 0f;

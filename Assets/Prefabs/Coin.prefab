@@ -108,8 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   spawner: {fileID: 0}
+  regularSpawn: 0
   pickupDelay: 0.2
   freezeDelay: 1.5
+  collectSound: {fileID: 8300000, guid: 0f107842abb21438e86ca6d8af290c05, type: 3}
 --- !u!58 &6049419035346757158
 CircleCollider2D:
   m_ObjectHideFlags: 0

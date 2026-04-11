@@ -258,6 +258,8 @@ MonoBehaviour:
   requireGroundToSwitch: 1
   useCooldownToSwitch: 0
   gravityCooldownTime: 1.5
+  staggerDuration: 0.2
+  knockbackForce: 10
   audioSource: {fileID: -6119606258959143710}
   jumpSound: {fileID: 8300000, guid: fd3202bd2b5994b31959fa27355df2eb, type: 3}
 --- !u!82 &-6119606258959143710
@@ -480,9 +482,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   coins: 0
+  coins_for_win: 10
   scoreTextField: {fileID: 0}
   dropper: {fileID: 2998867155468443200}
-  ui: {fileID: 0}
 --- !u!114 &893284423044185026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +504,8 @@ MonoBehaviour:
     m_Bits: 128
   coinsLostOnHit: 2
   hitboxVisual: {fileID: 4831931256881221196}
+  audioSource: {fileID: -6119606258959143710}
+  swingSound: {fileID: 8300000, guid: 4e754089fa3264ae18ac07ca1ee1a52b, type: 3}
 --- !u!114 &2998867155468443200
 MonoBehaviour:
   m_ObjectHideFlags: 0

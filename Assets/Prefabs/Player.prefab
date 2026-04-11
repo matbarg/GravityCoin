@@ -504,6 +504,8 @@ MonoBehaviour:
     m_Bits: 128
   coinsLostOnHit: 2
   hitboxVisual: {fileID: 4831931256881221196}
+  audioSource: {fileID: 741057677722810872}
+  swingSound: {fileID: 8300000, guid: 4e754089fa3264ae18ac07ca1ee1a52b, type: 3}
 --- !u!114 &2998867155468443200
 MonoBehaviour:
   m_ObjectHideFlags: 0

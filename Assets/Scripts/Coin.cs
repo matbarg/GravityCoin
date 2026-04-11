@@ -11,6 +11,9 @@ public class Coin : MonoBehaviour
     [SerializeField] private float pickupDelay = 0.5f;
     [SerializeField] private float freezeDelay = 0.05f;
 
+    [Header("Audio")]
+    public AudioClip collectSound;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +71,10 @@ public class Coin : MonoBehaviour
         if (inv != null)
         {
             inv.AddCoin();
+            if (collectSound != null)
+            {
+                AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            }
 
             if (regularSpawn)
             {
