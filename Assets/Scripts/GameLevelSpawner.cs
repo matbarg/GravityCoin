@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GameLevelSpawner : MonoBehaviour
 {
     [Header("Das ECHTE Spieler-Prefab (mit Physik, Waffen etc.)")]
     public GameObject playerPrefab;
     public UIManager uiManager;
-    public Transform[] spawnPoints;
+
+    [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
+    public TextMeshProUGUI[] playerTextFields;
+
     void Start()
     {
         Spawn(PlayerSessionData.keyboardLeftJoined, "KeyBoardLeft", Keyboard.current);
@@ -32,15 +36,14 @@ public class GameLevelSpawner : MonoBehaviour
 
         int index = input.playerIndex;
 
-        if (spawnPoints.Length > 0)
-        {
-            player.transform.position = spawnPoints[index % spawnPoints.Length].position;
-        }
-        
-        // create UI for this player
-        PlayerScoreUI ui = uiManager.CreateUI(index);
+        PlayerInventory inventory = input.gameObject.GetComponent<PlayerInventory>();
 
-        // connect UI → player
-        player.GetComponent<PlayerInventory>().ui = ui;
+        if (index < playerTextFields.Length && playerTextFields[index] != null)
+        {
+            inventory.scoreTextField = playerTextFields[index];
+            
+            // Optional: Initialen Wert anzeigen
+            inventory.scoreTextField.text = "0";
+        }
     }
 }
