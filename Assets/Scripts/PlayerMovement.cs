@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     public float gravityCooldownTime = 1.5f;
     private float nextGravitySwitchTime = 0f;
     private bool hasTouchedGroundSinceSwitch = true;
+
+    [Header("Sounds")]
+    public AudioSource audioSource; // Der Lautsprecher am Spieler
+    public AudioClip jumpSound;     // Die Sounddatei für den Sprung
     
 
     private Animator animator;
@@ -61,6 +65,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower * gravityDirection);
             animator.SetTrigger("Jump");
+            
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
 
         if (context.canceled && rb.linearVelocity.y * gravityDirection > 0f)
