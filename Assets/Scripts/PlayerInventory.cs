@@ -26,8 +26,7 @@ public class PlayerInventory : MonoBehaviour
 
         int id = GetComponent<UnityEngine.InputSystem.PlayerInput>().playerIndex;
         Debug.Log("Spieler " + id + " hat jetzt " + coins + " Münzen.");
-
-
+        
         Debug.Log("Coins: " + coins);
         // UI update here
     }

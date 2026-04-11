@@ -8,6 +8,11 @@ public class AnimationEventRelay : MonoBehaviour
     {
         combat = GetComponentInParent<PlayerCombat>();
     }
+    
+    public void PerformAttack()
+    {
+        combat.PerformAttack();
+    }
 
     public void EndAttack()
     {
