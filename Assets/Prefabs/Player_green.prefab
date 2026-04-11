@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 893284423044185026}
   - component: {fileID: 2998867155468443200}
   m_Layer: 7
-  m_Name: Player
+  m_Name: Player_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,9 +254,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  requireGroundToSwitch: 1
-  useCooldownToSwitch: 1
-  gravityCooldownTime: 4
 --- !u!114 &6189959843464085873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3764650413000385903}
     m_Modifications:
+    - target: {fileID: 3851659805609620370, guid: fe6573a3826c43879c128f123f5a9614, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8ceceb24561f848e39e52033ed221a0a, type: 2}
     - target: {fileID: 8330931925060031038, guid: fe6573a3826c43879c128f123f5a9614, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -559,6 +560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword_idle_side
       objectReference: {fileID: 0}
+    - target: {fileID: 8330931925060031425, guid: fe6573a3826c43879c128f123f5a9614, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 169040f12c9542d69257519110d51458, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
