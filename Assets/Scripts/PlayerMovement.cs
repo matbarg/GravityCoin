@@ -24,7 +24,10 @@ public class PlayerMovement : MonoBehaviour
 	private bool isStaggered = false;
 	[SerializeField] private float staggerDuration = 0.2f;
 	[SerializeField] private float knockbackForce = 10f;
-    
+
+    [Header("Sounds")]
+    public AudioSource audioSource; // Der Lautsprecher am Spieler
+    public AudioClip jumpSound;     // Die Sounddatei für den Sprung
 
     private Animator animator;
 
@@ -70,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower * gravityDirection);
             animator.SetTrigger("Jump");
+
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
 
         if (context.canceled && rb.linearVelocity.y * gravityDirection > 0f)
@@ -101,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(InputAction.CallbackContext context)
-    { 
+    {
 		if (isStaggered) return;
         horizontal = context.ReadValue<Vector2>().x;
     }

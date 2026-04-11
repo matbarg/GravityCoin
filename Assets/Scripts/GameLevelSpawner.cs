@@ -4,14 +4,16 @@ using TMPro;
 
 public class GameLevelSpawner : MonoBehaviour
 {
-    [Header("Das ECHTE Spieler-Prefab (mit Physik, Waffen etc.)")]
-    public GameObject playerPrefab;
+    [Header("Spieler-Prefabs")]
+    public GameObject[] playerPrefabs; 
     public UIManager uiManager;
     public Transform[] spawnPoints;
 
     [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
-    
     public TextMeshProUGUI[] playerTextFields;
+
+    
+    private int spawnedPlayersCount = 0;
 
     void Start()
     {
@@ -28,29 +30,29 @@ public class GameLevelSpawner : MonoBehaviour
     {
         if (!condition) return;
 
+        GameObject prefabToSpawn = playerPrefabs[spawnedPlayersCount % playerPrefabs.Length];
+
         PlayerInput input = PlayerInput.Instantiate(
-            playerPrefab,
+            prefabToSpawn,
             controlScheme: scheme,
             pairWithDevice: device
         );
 
         GameObject player = input.gameObject;
-
-        int index = input.playerIndex;
+        int index = input.playerIndex; 
 
         if (spawnPoints.Length > 0)
         {
             player.transform.position = spawnPoints[index % spawnPoints.Length].position;
         }
 
-        PlayerInventory inventory = input.gameObject.GetComponent<PlayerInventory>();
+        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
 
         if (index < playerTextFields.Length && playerTextFields[index] != null)
         {
             inventory.scoreTextField = playerTextFields[index];
-            
-            // Optional: Initialen Wert anzeigen
             inventory.scoreTextField.text = "0";
         }
+        spawnedPlayersCount++;
     }
 }
