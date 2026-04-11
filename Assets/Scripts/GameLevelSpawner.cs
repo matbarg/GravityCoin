@@ -6,7 +6,7 @@ public class GameLevelSpawner : MonoBehaviour
     [Header("Das ECHTE Spieler-Prefab (mit Physik, Waffen etc.)")]
     public GameObject playerPrefab;
     public UIManager uiManager;
-
+    public Transform[] spawnPoints;
     void Start()
     {
         Spawn(PlayerSessionData.keyboardLeftJoined, "KeyBoardLeft", Keyboard.current);
@@ -32,6 +32,11 @@ public class GameLevelSpawner : MonoBehaviour
 
         int index = input.playerIndex;
 
+        if (spawnPoints.Length > 0)
+        {
+            player.transform.position = spawnPoints[index % spawnPoints.Length].position;
+        }
+        
         // create UI for this player
         PlayerScoreUI ui = uiManager.CreateUI(index);
 

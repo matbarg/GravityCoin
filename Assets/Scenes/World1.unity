@@ -728,6 +728,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &767270037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8991567940836548942, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &884185969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,6 +1022,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameLevelSpawner
   playerPrefab: {fileID: 4756779142634574202, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
   uiManager: {fileID: 426669709}
+  spawnPoints:
+  - {fileID: 1132597238}
+  - {fileID: 767270037}
+  - {fileID: 1237591374}
+  - {fileID: 1243299361}
+--- !u!4 &1132597238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5734687522335959128, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1237591374 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2935614703308710476, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1243299361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 112632828357662665, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1361672644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2381402030634788282, guid: 5935330cc54bd46bda2b50a92d313303, type: 3}
