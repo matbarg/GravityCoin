@@ -256,8 +256,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   requireGroundToSwitch: 1
-  useCooldownToSwitch: 0
-  gravityCooldownTime: 1.5
+  useCooldownToSwitch: 1
+  gravityCooldownTime: 1
   staggerDuration: 0.2
   knockbackForce: 10
   audioSource: {fileID: -5116897442592393926}
@@ -506,6 +506,7 @@ MonoBehaviour:
   hitboxVisual: {fileID: 4831931256881221196}
   audioSource: {fileID: -5116897442592393926}
   swingSound: {fileID: 8300000, guid: 4e754089fa3264ae18ac07ca1ee1a52b, type: 3}
+  maxAttackDuration: 0.5
 --- !u!114 &2998867155468443200
 MonoBehaviour:
   m_ObjectHideFlags: 0

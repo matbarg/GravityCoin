@@ -16,6 +16,8 @@ public class PlayerCombat : MonoBehaviour
     public AudioSource audioSource; // Der Lautsprecher am Spieler
     public AudioClip swingSound;
 
+    public float maxAttackDuration = 0.5f;
+
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -33,17 +35,23 @@ public class PlayerCombat : MonoBehaviour
         
     }
 
-    public void Attack(InputAction.CallbackContext context)
+public void Attack(InputAction.CallbackContext context)
     {
         if (!context.performed || isAttacking) return;
         
         isAttacking = true;
         if (audioSource != null && swingSound != null)
-            {
-                audioSource.PlayOneShot(swingSound);
-            } 
+        {
+            audioSource.PlayOneShot(swingSound);
+        } 
         Debug.Log("Attack!");
         animator.SetTrigger("Attack");
+
+        // --- NEU: Das Sicherheitsnetz ---
+        // Stoppt alte Timer, falls vorhanden
+        CancelInvoke(nameof(EndAttack)); 
+        // Erzwingt den Reset, falls das Animation Event übersprungen wird
+        Invoke(nameof(EndAttack), maxAttackDuration); 
     }
     
     public void PerformAttack()
