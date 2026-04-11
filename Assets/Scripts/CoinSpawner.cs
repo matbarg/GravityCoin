@@ -33,6 +33,7 @@ public class CoinSpawner : MonoBehaviour
 
         Coin coinScript = currentCoin.GetComponent<Coin>();
         coinScript.spawner = this;
+		coinScript.regularSpawn = true;
         
         Debug.Log("Spawned Coin");
     }

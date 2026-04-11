@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
     public CoinSpawner spawner;
     private Rigidbody2D rb;
     private bool canBePickedUp;
+    public bool regularSpawn = false;
 
     [SerializeField] private float pickupDelay = 0.5f;
     [SerializeField] private float freezeDelay = 0.05f;
@@ -67,7 +68,11 @@ public class Coin : MonoBehaviour
         if (inv != null)
         {
             inv.AddCoin();
-            //spawner.OnCoinCollected();
+
+            if (regularSpawn)
+            {
+                spawner.OnCoinCollected();
+            }
             Destroy(gameObject);
         }
     }
