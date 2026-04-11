@@ -11,25 +11,38 @@ public class GameLevelSpawner : MonoBehaviour
     [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
     public TextMeshProUGUI[] playerTextFields;
 
-    
-    private int spawnedPlayersCount = 0;
-
     void Start()
     {
-        Spawn(PlayerSessionData.keyboardLeftJoined, "KeyBoardLeft", Keyboard.current);
-        Spawn(PlayerSessionData.keyboardRightJoined, "KeyBoardRight", Keyboard.current);
-
-        foreach (var gamepad in PlayerSessionData.joinedGamepads)
+        for (int i = 0; i < PlayerSessionData.players.Count; i++)
         {
-            Spawn(true, "Gamepad", gamepad);
+            Spawn(PlayerSessionData.players[i], i);
         }
     }
 
-    void Spawn(bool condition, string scheme, InputDevice device)
+    void Spawn(PlayerInfo playerInfo, int index)
     {
-        if (!condition) return;
+        GameObject prefabToSpawn = playerPrefabs[index % playerPrefabs.Length];
 
-        GameObject prefabToSpawn = playerPrefabs[spawnedPlayersCount % playerPrefabs.Length];
+        string scheme = "";
+        InputDevice device = null;
+
+        switch (playerInfo.inputType)
+        {
+            case InputType.KeyboardLeft:
+                scheme = "KeyBoardLeft";
+                device = Keyboard.current;
+                break;
+
+            case InputType.KeyboardRight:
+                scheme = "KeyBoardRight";
+                device = Keyboard.current;
+                break;
+
+            case InputType.Gamepad:
+                scheme = "Gamepad";
+                device = playerInfo.gamepad;
+                break;
+        }
 
         PlayerInput input = PlayerInput.Instantiate(
             prefabToSpawn,
@@ -38,8 +51,8 @@ public class GameLevelSpawner : MonoBehaviour
         );
 
         GameObject player = input.gameObject;
-        int index = input.playerIndex; 
 
+        // IMPORTANT: do NOT rely on input.playerIndex anymore
         if (spawnPoints.Length > 0)
         {
             player.transform.position = spawnPoints[index % spawnPoints.Length].position;
@@ -52,6 +65,5 @@ public class GameLevelSpawner : MonoBehaviour
             inventory.scoreTextField = playerTextFields[index];
             inventory.scoreTextField.text = "0";
         }
-        spawnedPlayersCount++;
     }
 }

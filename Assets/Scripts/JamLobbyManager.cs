@@ -9,7 +9,6 @@ public class JamLobbyManager : MonoBehaviour
 
     void Start()
     {
-        
     
         PlayerSessionData.ResetLobby();
         
@@ -22,36 +21,72 @@ public class JamLobbyManager : MonoBehaviour
 
     void Update()
     {
-        // 1. Tastatur Links (W)
-        if (!PlayerSessionData.keyboardLeftJoined && Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
+        // Keyboard Left (W)
+        if (Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
         {
-            PlayerSessionData.keyboardLeftJoined = true;
-            ActivateUI(0);
-            Debug.Log("P1 (WASD) ist bereit!");
+            if (!AlreadyJoined(InputType.KeyboardLeft))
+            {
+                AddPlayer(InputType.KeyboardLeft, null);
+                Debug.Log("Keyboard Left joined");
+            }
         }
 
-        // 2. Tastatur Rechts (Pfeile)
-        if (!PlayerSessionData.keyboardRightJoined && Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
+        // Keyboard Right (Arrow Up)
+        if (Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
-            PlayerSessionData.keyboardRightJoined = true;
-            ActivateUI(1); 
-            Debug.Log("P2 (Pfeile) ist bereit!");
+            if (!AlreadyJoined(InputType.KeyboardRight))
+            {
+                AddPlayer(InputType.KeyboardRight, null);
+                Debug.Log("Keyboard Right joined");
+            }
         }
 
-        // 3. Controller
+        // Gamepads
         foreach (var gamepad in Gamepad.all)
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                if (!PlayerSessionData.joinedGamepads.Contains(gamepad))
+                if (!AlreadyJoined(gamepad))
                 {
-                    PlayerSessionData.joinedGamepads.Add(gamepad);
-                    int slotIndex = 2 + (PlayerSessionData.joinedGamepads.Count - 1);
-                    ActivateUI(slotIndex);
-                    Debug.Log("Controller Spieler bereit!");
+                    AddPlayer(InputType.Gamepad, gamepad);
+                    Debug.Log("Gamepad joined");
                 }
             }
         }
+    }
+    
+    bool AlreadyJoined(InputType type)
+    {
+        foreach (var player in PlayerSessionData.players)
+        {
+            if (player.inputType == type)
+                return true;
+        }
+        return false;
+    }
+
+    bool AlreadyJoined(Gamepad pad)
+    {
+        foreach (var player in PlayerSessionData.players)
+        {
+            if (player.gamepad == pad)
+                return true;
+        }
+        return false;
+    }
+
+    void AddPlayer(InputType type, Gamepad pad)
+    {
+        PlayerInfo newPlayer = new PlayerInfo
+        {
+            inputType = type,
+            gamepad = pad
+        };
+
+        PlayerSessionData.players.Add(newPlayer);
+
+        int slotIndex = PlayerSessionData.players.Count - 1;
+        ActivateUI(slotIndex);
     }
 
     private void ActivateUI(int index)
