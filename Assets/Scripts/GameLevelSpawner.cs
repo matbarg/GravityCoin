@@ -5,23 +5,37 @@ public class GameLevelSpawner : MonoBehaviour
 {
     [Header("Das ECHTE Spieler-Prefab (mit Physik, Waffen etc.)")]
     public GameObject playerPrefab;
+    public UIManager uiManager;
 
     void Start()
     {
-        
-        if (PlayerSessionData.keyboardLeftJoined)
-        {
-            PlayerInput.Instantiate(playerPrefab, controlScheme: "KeyBoardLeft", pairWithDevice: Keyboard.current);
-        }
-
-        if (PlayerSessionData.keyboardRightJoined)
-        {
-            PlayerInput.Instantiate(playerPrefab, controlScheme: "KeyBoardRight", pairWithDevice: Keyboard.current);
-        }
+        Spawn(PlayerSessionData.keyboardLeftJoined, "KeyBoardLeft", Keyboard.current);
+        Spawn(PlayerSessionData.keyboardRightJoined, "KeyBoardRight", Keyboard.current);
 
         foreach (var gamepad in PlayerSessionData.joinedGamepads)
         {
-            PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: gamepad);
+            Spawn(true, "Gamepad", gamepad);
         }
+    }
+
+    void Spawn(bool condition, string scheme, InputDevice device)
+    {
+        if (!condition) return;
+
+        PlayerInput input = PlayerInput.Instantiate(
+            playerPrefab,
+            controlScheme: scheme,
+            pairWithDevice: device
+        );
+
+        GameObject player = input.gameObject;
+
+        int index = input.playerIndex;
+
+        // create UI for this player
+        PlayerScoreUI ui = uiManager.CreateUI(index);
+
+        // connect UI → player
+        player.GetComponent<PlayerInventory>().ui = ui;
     }
 }

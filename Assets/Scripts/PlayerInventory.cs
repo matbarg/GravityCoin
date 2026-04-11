@@ -4,6 +4,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public int coins = 0;
     public PlayerCoinDropper dropper;
+	public PlayerScoreUI ui;
 
     public void AddCoin(int amount = 1)
     {
@@ -23,11 +24,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void UpdateUI()
     {
-
         int id = GetComponent<UnityEngine.InputSystem.PlayerInput>().playerIndex;
-        Debug.Log("Spieler " + id + " hat jetzt " + coins + " Münzen.");
-        
-        Debug.Log("Coins: " + coins);
-        // UI update here
+        if (ui != null)
+		{
+        	ui.SetScore(id, coins);
+		}
+
+    	Debug.Log($"Spieler {id} hat jetzt {coins} Münzen.");
     }
 }
