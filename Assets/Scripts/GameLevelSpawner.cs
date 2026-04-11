@@ -7,8 +7,10 @@ public class GameLevelSpawner : MonoBehaviour
     [Header("Das ECHTE Spieler-Prefab (mit Physik, Waffen etc.)")]
     public GameObject playerPrefab;
     public UIManager uiManager;
+    public Transform[] spawnPoints;
 
     [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
+    
     public TextMeshProUGUI[] playerTextFields;
 
     void Start()
@@ -35,6 +37,11 @@ public class GameLevelSpawner : MonoBehaviour
         GameObject player = input.gameObject;
 
         int index = input.playerIndex;
+
+        if (spawnPoints.Length > 0)
+        {
+            player.transform.position = spawnPoints[index % spawnPoints.Length].position;
+        }
 
         PlayerInventory inventory = input.gameObject.GetComponent<PlayerInventory>();
 

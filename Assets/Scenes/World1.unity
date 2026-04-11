@@ -1247,11 +1247,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameLevelSpawner
   playerPrefab: {fileID: 4756779142634574202, guid: fb92987194f394ec2a0a776513870fc9, type: 3}
   uiManager: {fileID: 426669709}
+  spawnPoints:
+  - {fileID: 1461659876}
+  - {fileID: 1152029283}
+  - {fileID: 1046909135}
+  - {fileID: 1916523792}
   playerTextFields:
   - {fileID: 437504400}
   - {fileID: 1962565290}
   - {fileID: 2008903334}
   - {fileID: 1353615054}
+--- !u!4 &1046909135 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2935614703308710476, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1152029283 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8991567940836548942, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1353615052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1407,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353615052}
   m_CullTransparentMesh: 1
+--- !u!4 &1461659876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5734687522335959128, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1826606094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1481,6 +1501,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b315e709af179455e972f7d829fd3ee0, type: 3}
+--- !u!4 &1916523792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 112632828357662665, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+  m_PrefabInstance: {fileID: 884185969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962565288
 GameObject:
   m_ObjectHideFlags: 0
