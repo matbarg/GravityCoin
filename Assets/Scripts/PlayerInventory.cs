@@ -4,12 +4,13 @@ using TMPro;
 public class PlayerInventory : MonoBehaviour
 {
     public int coins = 0;
+
+    public int coins_for_win = 10;
     
     [HideInInspector]
     public TextMeshProUGUI scoreTextField;
 
     public PlayerCoinDropper dropper;
-	public PlayerScoreUI ui;
 
     public void AddCoin(int amount = 1)
     {
@@ -30,10 +31,6 @@ public class PlayerInventory : MonoBehaviour
     private void UpdateUI()
     {
         int id = GetComponent<UnityEngine.InputSystem.PlayerInput>().playerIndex;
-        if (ui != null)
-		{
-        	ui.SetScore(id, coins);
-		}
         
         if (scoreTextField != null)
         {
@@ -42,5 +39,17 @@ public class PlayerInventory : MonoBehaviour
         }
 
     	Debug.Log($"Spieler {id} hat jetzt {coins} Münzen.");
+
+        if (coins >= coins_for_win)
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ShowWinScreen(id);
+            }
+            else
+            {
+                Debug.Log("GameManager nicht gefunden");
+            }
+        }
     }
 }

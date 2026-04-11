@@ -258,6 +258,8 @@ MonoBehaviour:
   requireGroundToSwitch: 1
   useCooldownToSwitch: 1
   gravityCooldownTime: 4
+  staggerDuration: 0.2
+  knockbackForce: 10
   audioSource: {fileID: 741057677722810872}
   jumpSound: {fileID: 8300000, guid: fd3202bd2b5994b31959fa27355df2eb, type: 3}
 --- !u!82 &741057677722810872
@@ -480,9 +482,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   coins: 0
+  coins_for_win: 10
   scoreTextField: {fileID: 0}
   dropper: {fileID: 2998867155468443200}
-  ui: {fileID: 0}
 --- !u!114 &893284423044185026
 MonoBehaviour:
   m_ObjectHideFlags: 0

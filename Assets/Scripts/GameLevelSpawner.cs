@@ -6,7 +6,6 @@ public class GameLevelSpawner : MonoBehaviour
 {
     [Header("Spieler-Prefabs")]
     public GameObject[] playerPrefabs; 
-    public UIManager uiManager;
     public Transform[] spawnPoints;
 
     [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
