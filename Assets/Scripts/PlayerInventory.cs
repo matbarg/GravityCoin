@@ -1,8 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
     public int coins = 0;
+    
+    [HideInInspector]
+    public TextMeshProUGUI scoreTextField;
+
     public PlayerCoinDropper dropper;
 	public PlayerScoreUI ui;
 
@@ -29,6 +34,12 @@ public class PlayerInventory : MonoBehaviour
 		{
         	ui.SetScore(id, coins);
 		}
+        
+        if (scoreTextField != null)
+        {
+            scoreTextField.text = coins.ToString(); 
+            // Oder schöner: scoreTextField.text = $"Coins: {coins}";
+        }
 
     	Debug.Log($"Spieler {id} hat jetzt {coins} Münzen.");
     }
