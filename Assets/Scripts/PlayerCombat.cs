@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask playerLayer;
     public int coinsLostOnHit = 2;
     [SerializeField] private GameObject hitboxVisual;
-
+	private bool isHitStopped = false;
 
     void Awake()
     {
@@ -69,6 +70,8 @@ public class PlayerCombat : MonoBehaviour
                 Debug.Log("Target hit.");
                 target.LoseCoins(coinsLostOnHit);
             }
+			
+			TriggerHitStop(0.2f);
         }
         
         Invoke(nameof(HideHitbox), 0.1f);
@@ -103,4 +106,22 @@ public class PlayerCombat : MonoBehaviour
 
         hitboxVisual.transform.localScale = new Vector3(scale, scale, 1f);
     }
+
+	public void TriggerHitStop(float duration)
+	{
+		if (isHitStopped) return;
+
+    	isHitStopped = true;
+    	Time.timeScale = 0f;
+
+    	StartCoroutine(HitStopCoroutine(duration));
+	}
+
+	IEnumerator HitStopCoroutine(float duration)
+	{
+    	yield return new WaitForSecondsRealtime(duration);
+
+    	Time.timeScale = 1f;
+    	isHitStopped = false;
+	}
 }

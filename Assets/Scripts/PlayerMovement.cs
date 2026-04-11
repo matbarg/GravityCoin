@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool isStaggered = false;
 	[SerializeField] private float staggerDuration = 0.2f;
-	[SerializeField] private float knockbackForce = 8f;
+	[SerializeField] private float knockbackForce = 10f;
     
 
     private Animator animator;
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (isStaggered) return;
         if (context.performed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower * gravityDirection);
@@ -107,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void SwitchGravity(InputAction.CallbackContext context)
     {
+        if (isStaggered) return;
         if (context.performed)
         {
             if (requireGroundToSwitch && !hasTouchedGroundSinceSwitch)
