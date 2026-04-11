@@ -345,6 +345,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  requireGroundToSwitch: 1
+  useCooldownToSwitch: 1
+  gravityCooldownTime: 4
 --- !u!114 &6189959843464085873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   coins: 0
   dropper: {fileID: 2998867155468443200}
+  ui: {fileID: 0}
 --- !u!114 &893284423044185026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   coinPrefab: {fileID: 4113704058504343442, guid: cc77a087492ed40658d1497a01476cda, type: 3}
   spawnRadius: 0.5
+  burstForce: 3
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,14 @@ public class PlayerMovement : MonoBehaviour
     private float gravityDirection = 1f; // 1 = normal, -1 = inverted
     private bool isGrounded;
 
+    [Header("Gravity Settings")]
+    public bool requireGroundToSwitch = true;
+    public bool useCooldownToSwitch = false;  
+    public float gravityCooldownTime = 1.5f;
+    private float nextGravitySwitchTime = 0f;
+    private bool hasTouchedGroundSinceSwitch = true;
+    
+
     private Animator animator;
 
     void Awake()
@@ -40,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         isGrounded = IsGrounded();
+
+        if (isGrounded)
+        {
+            hasTouchedGroundSinceSwitch = true;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -87,12 +100,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
+            if (requireGroundToSwitch && !hasTouchedGroundSinceSwitch)
+            {
+                return; 
+            }
+        if (useCooldownToSwitch && Time.time < nextGravitySwitchTime)
+            {
+                return;
+            }
+
+
+
             gravityDirection *= -1f;
             rb.gravityScale *= -1f;
 
             FlipVertical();
             
             animator.SetTrigger("Jump");
+            hasTouchedGroundSinceSwitch = false;
+            nextGravitySwitchTime = Time.time + gravityCooldownTime;
         }
     }
 }
