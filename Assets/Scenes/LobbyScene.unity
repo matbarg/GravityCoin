@@ -492,6 +492,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1946653198}
     m_Modifications:
+    - target: {fileID: 8330931924289300123, guid: b59226778f2a470d9e417d98b4ef3905, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330931924782876164, guid: b59226778f2a470d9e417d98b4ef3905, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8330931925060031038, guid: b59226778f2a470d9e417d98b4ef3905, type: 3}
       propertyPath: m_LocalScale.x
       value: 30
@@ -557,6 +565,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8330931925060031425, guid: b59226778f2a470d9e417d98b4ef3905, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330931925467248425, guid: b59226778f2a470d9e417d98b4ef3905, type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
@@ -1154,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JamLobbyManager
   characterModels:
-  - {fileID: 994479485}
+  - {fileID: 4423223292004880406, guid: 7d6bcb1ac80845bd89929ea472bf397e, type: 3}
   - {fileID: 374164345}
   - {fileID: 932998491}
   - {fileID: 651288091}
@@ -1530,11 +1542,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea3eb5ac1dbc94622bae3477b719434a, type: 3}
---- !u!1 &994479485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8572334116036363630, guid: baf348122ca149d99149f61f12e159cb, type: 3}
-  m_PrefabInstance: {fileID: 1424106463}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995432337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1625,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 299543809}
     m_Modifications:
+    - target: {fileID: 2688344385766216991, guid: 2e127c7ae05d484bb5433700dc82b236, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2688344385787582933, guid: 2e127c7ae05d484bb5433700dc82b236, type: 3}
       propertyPath: m_Name
       value: hammer_attack_side
@@ -1685,6 +1696,14 @@ PrefabInstance:
     - target: {fileID: 2688344385787583016, guid: 2e127c7ae05d484bb5433700dc82b236, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688344386178927706, guid: 2e127c7ae05d484bb5433700dc82b236, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688344386743913345, guid: 2e127c7ae05d484bb5433700dc82b236, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1845,9 +1864,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8572334114598048370, guid: baf348122ca149d99149f61f12e159cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8572334115846477968, guid: baf348122ca149d99149f61f12e159cb, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572334115846477974, guid: baf348122ca149d99149f61f12e159cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8572334116036363628, guid: baf348122ca149d99149f61f12e159cb, type: 3}
       propertyPath: m_SortingOrder
@@ -1920,6 +1947,10 @@ PrefabInstance:
     - target: {fileID: 8572334116036363630, guid: baf348122ca149d99149f61f12e159cb, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572334116172196029, guid: baf348122ca149d99149f61f12e159cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8572334116172196030, guid: baf348122ca149d99149f61f12e159cb, type: 3}
       propertyPath: m_Layer
@@ -2065,6 +2096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1653057945}
     m_Modifications:
+    - target: {fileID: 4423223291832102644, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4423223292004880404, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -2132,6 +2167,14 @@ PrefabInstance:
     - target: {fileID: 4423223292004880406, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423223292375516554, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423223292839307368, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
