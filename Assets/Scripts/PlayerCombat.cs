@@ -42,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
     
     public void PerformAttack()
     {
-        hitboxVisual.SetActive(true);
+        //hitboxVisual.SetActive(true);
         
         Debug.Log("Start hitbox");
         
@@ -71,7 +71,7 @@ public class PlayerCombat : MonoBehaviour
                 target.LoseCoins(coinsLostOnHit);
             }
 			
-			TriggerHitStop(0.2f);
+			TriggerHitStop(0.12f);
         }
         
         Invoke(nameof(HideHitbox), 0.1f);
