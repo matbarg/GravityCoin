@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     public float gravityCooldownTime = 1.5f;
     private float nextGravitySwitchTime = 0f;
     private bool hasTouchedGroundSinceSwitch = true;
+
+	private bool isStaggered = false;
+	[SerializeField] private float staggerDuration = 0.2f;
+	[SerializeField] private float knockbackForce = 8f;
     
 
     private Animator animator;
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+		if (isStaggered) return;
+
         animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
         animator.SetBool("IsGrounded", isGrounded);
         
@@ -46,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+    	if (isStaggered) return;
+
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         isGrounded = IsGrounded();
 
@@ -92,7 +100,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(InputAction.CallbackContext context)
-    {
+    { 
+		if (isStaggered) return;
         horizontal = context.ReadValue<Vector2>().x;
     }
     
@@ -121,4 +130,27 @@ public class PlayerMovement : MonoBehaviour
             nextGravitySwitchTime = Time.time + gravityCooldownTime;
         }
     }
+
+	public void TakeHit(Vector2 hitSourcePosition)
+	{
+    	if (isStaggered) return;
+
+    	isStaggered = true;
+
+    	// Trigger animation
+    	animator.SetTrigger("Hit");
+
+    	// Apply knockback
+    	Vector2 direction = (Vector2)(transform.position - (Vector3)hitSourcePosition).normalized;
+    	rb.linearVelocity = Vector2.zero;
+    	rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+
+    	// Disable control briefly
+    	Invoke(nameof(EndStagger), staggerDuration);
+	}
+
+	private void EndStagger()
+	{
+    	isStaggered = false;
+	}
 }

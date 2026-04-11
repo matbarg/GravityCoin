@@ -55,6 +55,13 @@ public class PlayerCombat : MonoBehaviour
         {
             if (hit.gameObject == gameObject) continue;
 
+			PlayerMovement movement = hit.GetComponent<PlayerMovement>();
+
+			if (movement != null)
+			{
+    			movement.TakeHit(transform.position);
+			}
+
             PlayerInventory target = hit.GetComponent<PlayerInventory>();
 
             if (target != null)
