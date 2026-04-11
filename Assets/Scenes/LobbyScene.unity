@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JamLobbyManager
   characterModels:
-  - {fileID: 4423223292004880406, guid: 7d6bcb1ac80845bd89929ea472bf397e, type: 3}
+  - {fileID: 994479485}
   - {fileID: 374164345}
   - {fileID: 932998491}
   - {fileID: 651288091}
@@ -1542,6 +1542,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea3eb5ac1dbc94622bae3477b719434a, type: 3}
+--- !u!1 &994479485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8572334116036363630, guid: baf348122ca149d99149f61f12e159cb, type: 3}
+  m_PrefabInstance: {fileID: 1424106463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995432337
 GameObject:
   m_ObjectHideFlags: 0
