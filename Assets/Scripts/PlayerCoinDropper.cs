@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerCoinDropper : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private float spawnRadius = 0.5f;
 
-    // Update is called once per frame
-    void Update()
+    public void DropCoins(int amount, Vector2 origin)
     {
-        
+        for (int i = 0; i < amount; i++)
+        {
+            Vector2 spawnPos = origin + Random.insideUnitCircle * spawnRadius;
+
+            Instantiate(coinPrefab, spawnPos, Quaternion.identity);
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public int coins = 0;
-    //public PlayerCoinDropper dropper;
+    public PlayerCoinDropper dropper;
 
     public void AddCoin(int amount = 1)
     {
@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
         int lost = Mathf.Min(amount, coins);
         coins -= lost;
 
-        //dropper.DropCoins(lost, transform.position);
+        dropper.DropCoins(lost, transform.position);
 
         UpdateUI();
     }

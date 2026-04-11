@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   coins: 0
+  dropper: {fileID: 2998867155468443200}
 --- !u!114 &893284423044185026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adff6047f40f4ed19bca860e2f31a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  coinPrefab: {fileID: 4113704058504343442, guid: cc77a087492ed40658d1497a01476cda, type: 3}
+  spawnRadius: 0.5
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0

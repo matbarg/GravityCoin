@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         if (inv != null)
         {
             inv.AddCoin();
-            spawner.OnCoinCollected();
+            //spawner.OnCoinCollected();
             Destroy(gameObject);
         }
     }
