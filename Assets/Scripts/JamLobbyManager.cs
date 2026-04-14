@@ -98,7 +98,12 @@ public class JamLobbyManager : MonoBehaviour
     }
     public void StartGame()
     {
-        // Trage hier exakt den Namen deiner echten Level-Szene ein (z.B. "World1")
+        if (PlayerSessionData.players.Count < 2)
+        {
+            Debug.Log("Spiel kann nicht starten: Es müssen mindestens 2 Spieler beitreten!");
+            
+            return; 
+        }
         SceneManager.LoadScene("World1"); 
     }
 }
