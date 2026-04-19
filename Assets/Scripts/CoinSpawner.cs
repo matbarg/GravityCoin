@@ -8,6 +8,8 @@ public class CoinSpawner : MonoBehaviour
     public float respawnDelay = 2f;
 
     private GameObject currentCoin;
+    // Das Gedächtnis des Spawners
+    private int lastSpawnIndex = -1; 
 
     void Start()
     {
@@ -27,14 +29,37 @@ public class CoinSpawner : MonoBehaviour
 
     void SpawnCoin()
     {
-        Transform spawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
+       
+        if (spawnPoints == null || spawnPoints.Length == 0) return;
+
+        int randomIndex;
+
+       
+        if (spawnPoints.Length > 1)
+        {
+            do
+            {
+                randomIndex = Random.Range(0, spawnPoints.Length);
+            } while (randomIndex == lastSpawnIndex); 
+        }
+        else
+        {
+            randomIndex = 0; 
+        }
+
+        
+        lastSpawnIndex = randomIndex;
+        Transform spawn = spawnPoints[randomIndex];
 
         currentCoin = Instantiate(coinPrefab, spawn.position, Quaternion.identity);
 
         Coin coinScript = currentCoin.GetComponent<Coin>();
-        coinScript.spawner = this;
-		coinScript.regularSpawn = true;
+        if (coinScript != null)
+        {
+            coinScript.spawner = this;
+            coinScript.regularSpawn = true;
+        }
         
-        Debug.Log("Spawned Coin");
+        Debug.Log("Spawned Coin at Point: " + randomIndex);
     }
 }
