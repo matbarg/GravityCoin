@@ -7,22 +7,25 @@ public class JamLobbyManager : MonoBehaviour
 {
     [Header("UI Astronauten (Join Logik)")]
     public GameObject[] characterModels;
-    [Header("Map Auswahl UI")]
-    public GameObject[] planetModels;    
-    public TextMeshProUGUI mapNameText;  
-    
-    [Header("Map Daten")]
-    public string[] sceneNames;          
-    public string[] displayNames;     
+
+    [Header("Map Auswahl UI")] public GameObject[] planetModels;
+    public TextMeshProUGUI mapNameText;
+
+    [Header("Map Daten")] public string[] sceneNames;
+    public string[] displayNames;
     private int currentMapIndex = 0;
-    
+
     void Start()
     {
         PlayerSessionData.ResetLobby();
-        
+
         foreach (var model in characterModels)
         {
             if (model != null) model.SetActive(false);
+        }
+        foreach (var planet in planetModels)
+        {
+            if (planet != null) planet.SetActive(false);
         }
 
         UpdateMapUI();
@@ -30,10 +33,10 @@ public class JamLobbyManager : MonoBehaviour
 
     void Update()
     {
-     
+
         CheckForJoinInput();
     }
-    
+
     public void NextMap()
     {
         // Aktuellen Planeten ausschalten
@@ -44,6 +47,7 @@ public class JamLobbyManager : MonoBehaviour
 
         UpdateMapUI();
     }
+
     public void PreviousMap()
     {
         // Aktuellen Planeten ausschalten
@@ -55,17 +59,18 @@ public class JamLobbyManager : MonoBehaviour
 
         UpdateMapUI();
     }
+
     private void UpdateMapUI()
     {
         // Neuen Planeten aktivieren
-        if(currentMapIndex < planetModels.Length)
+        if (currentMapIndex < planetModels.Length)
             planetModels[currentMapIndex].SetActive(true);
 
         // Text aktualisieren
-        if(mapNameText != null && currentMapIndex < displayNames.Length)
+        if (mapNameText != null && currentMapIndex < displayNames.Length)
             mapNameText.text = displayNames[currentMapIndex];
     }
-    
+
     bool AlreadyJoined(InputType type)
     {
         foreach (var player in PlayerSessionData.players)
@@ -73,6 +78,7 @@ public class JamLobbyManager : MonoBehaviour
             if (player.inputType == type)
                 return true;
         }
+
         return false;
     }
 
@@ -83,6 +89,7 @@ public class JamLobbyManager : MonoBehaviour
             if (player.gamepad == pad)
                 return true;
         }
+
         return false;
     }
 
@@ -143,15 +150,23 @@ public class JamLobbyManager : MonoBehaviour
             }
         }
     }
+
     public void StartGame()
     {
         if (PlayerSessionData.players.Count < 2)
         {
-            Debug.Log("Spiel kann nicht starten: Es müssen mindestens 2 Spieler beitreten!");
-            
-            return; 
+            Debug.Log("Nicht genug Spieler!");
+            return;
         }
-        SceneManager.LoadScene(sceneNames[currentMapIndex]);
+
+        if (sceneNames.Length > 0 && currentMapIndex < sceneNames.Length)
+        {
+            string sceneToLoad = sceneNames[currentMapIndex];
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        else
+        {
+            Debug.LogError("Fehler: Du hast keine Scene Names im Inspector eingetragen!");
+        }
     }
-    
 }
