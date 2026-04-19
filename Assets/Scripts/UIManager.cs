@@ -4,6 +4,25 @@ public class UIManager : MonoBehaviour
 {
     public PlayerScoreUI uiPrefab;
     public Canvas canvas;
+    public GameObject[] playerPanels;
+    
+    void Start()
+    {
+        foreach (var panel in playerPanels)
+        {
+            panel.SetActive(false);
+        }
+        
+        int joinedPlayers = PlayerSessionData.players.Count;
+
+        for (int i = 0; i < joinedPlayers; i++)
+        {
+            if (i < playerPanels.Length)
+            {
+                playerPanels[i].SetActive(true);
+            }
+        }
+    }
 
     public PlayerScoreUI CreateUI(int playerIndex)
     {
