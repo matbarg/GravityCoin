@@ -1,58 +1,69 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class JamLobbyManager : MonoBehaviour
 {
-    [Header("UI Astronauten (Die Bilder in den Boxen)")]
+    [Header("UI Astronauten (Join Logik)")]
     public GameObject[] characterModels;
-
+    [Header("Map Auswahl UI")]
+    public GameObject[] planetModels;    
+    public TextMeshProUGUI mapNameText;  
+    
+    [Header("Map Daten")]
+    public string[] sceneNames;          
+    public string[] displayNames;     
+    private int currentMapIndex = 0;
+    
     void Start()
     {
-    
         PlayerSessionData.ResetLobby();
         
-       
         foreach (var model in characterModels)
         {
             if (model != null) model.SetActive(false);
         }
+
+        UpdateMapUI();
     }
 
     void Update()
     {
-        // Keyboard Left (W)
-        if (Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
-        {
-            if (!AlreadyJoined(InputType.KeyboardLeft))
-            {
-                AddPlayer(InputType.KeyboardLeft, null);
-                Debug.Log("Keyboard Left joined");
-            }
-        }
+     
+        CheckForJoinInput();
+    }
+    
+    public void NextMap()
+    {
+        // Aktuellen Planeten ausschalten
+        planetModels[currentMapIndex].SetActive(false);
 
-        // Keyboard Right (Arrow Up)
-        if (Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
-        {
-            if (!AlreadyJoined(InputType.KeyboardRight))
-            {
-                AddPlayer(InputType.KeyboardRight, null);
-                Debug.Log("Keyboard Right joined");
-            }
-        }
+        // Index erhöhen (und am Ende wieder bei 0 starten)
+        currentMapIndex = (currentMapIndex + 1) % sceneNames.Length;
 
-        // Gamepads
-        foreach (var gamepad in Gamepad.all)
-        {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
-            {
-                if (!AlreadyJoined(gamepad))
-                {
-                    AddPlayer(InputType.Gamepad, gamepad);
-                    Debug.Log("Gamepad joined");
-                }
-            }
-        }
+        UpdateMapUI();
+    }
+    public void PreviousMap()
+    {
+        // Aktuellen Planeten ausschalten
+        planetModels[currentMapIndex].SetActive(false);
+
+        // Index verringern (und am Anfang wieder zum Ende springen)
+        currentMapIndex--;
+        if (currentMapIndex < 0) currentMapIndex = sceneNames.Length - 1;
+
+        UpdateMapUI();
+    }
+    private void UpdateMapUI()
+    {
+        // Neuen Planeten aktivieren
+        if(currentMapIndex < planetModels.Length)
+            planetModels[currentMapIndex].SetActive(true);
+
+        // Text aktualisieren
+        if(mapNameText != null && currentMapIndex < displayNames.Length)
+            mapNameText.text = displayNames[currentMapIndex];
     }
     
     bool AlreadyJoined(InputType type)
@@ -96,6 +107,42 @@ public class JamLobbyManager : MonoBehaviour
             characterModels[index].SetActive(true);
         }
     }
+
+    private void CheckForJoinInput()
+    {
+        // Keyboard Left (W)
+        if (Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            if (!AlreadyJoined(InputType.KeyboardLeft))
+            {
+                AddPlayer(InputType.KeyboardLeft, null);
+                Debug.Log("Keyboard Left joined");
+            }
+        }
+
+        // Keyboard Right (Arrow Up)
+        if (Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            if (!AlreadyJoined(InputType.KeyboardRight))
+            {
+                AddPlayer(InputType.KeyboardRight, null);
+                Debug.Log("Keyboard Right joined");
+            }
+        }
+
+        // Gamepads
+        foreach (var gamepad in Gamepad.all)
+        {
+            if (gamepad.buttonSouth.wasPressedThisFrame)
+            {
+                if (!AlreadyJoined(gamepad))
+                {
+                    AddPlayer(InputType.Gamepad, gamepad);
+                    Debug.Log("Gamepad joined");
+                }
+            }
+        }
+    }
     public void StartGame()
     {
         if (PlayerSessionData.players.Count < 2)
@@ -104,6 +151,7 @@ public class JamLobbyManager : MonoBehaviour
             
             return; 
         }
-        SceneManager.LoadScene("World1"); 
+        SceneManager.LoadScene(sceneNames[currentMapIndex]);
     }
+    
 }
