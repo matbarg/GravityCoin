@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
+
 public class LeaderManager : MonoBehaviour
 {
     public TextMeshProUGUI leaderText; 
@@ -74,6 +75,7 @@ public class LeaderManager : MonoBehaviour
                 int playerID = input.playerIndex + 1;
                 leaderText.text = "Spieler " + playerID + " führt!";
             }
+
         }
         else
         {
