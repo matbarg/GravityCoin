@@ -13,7 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject hitboxVisual;
 	private bool isHitStopped = false;
     [Header("Audio")]
-    public AudioSource audioSource; // Der Lautsprecher am Spieler
+    public AudioSource audioSource; 
     public AudioClip swingSound;
 
     public float maxAttackDuration = 0.5f;

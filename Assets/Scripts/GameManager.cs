@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,18 +26,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ShowWinScreen(int playerIndex)
+    public void ShowWinScreen(int winnerID)
     {
         if (winPanel != null)
         {
             if (audioSource != null && winSound != null)
-            {
                 audioSource.PlayOneShot(winSound);
-            }
+
             winPanel.SetActive(true);
-            winText.text = $"Player {playerIndex + 1} wins!";
             Time.timeScale = 0f;
+            
+            DisplayRanking();
         }
+    }
+    void DisplayRanking()
+    {
+    
+        List<PlayerInventory> players = Object.FindObjectsByType<PlayerInventory>(FindObjectsSortMode.None).ToList();
+        var sortedPlayers = players.OrderByDescending(p => p.coins).ToList();
+
+  
+        string rankingString = ""; 
+
+        for (int i = 0; i < sortedPlayers.Count; i++)
+        {
+            int pID = sortedPlayers[i].GetComponent<UnityEngine.InputSystem.PlayerInput>().playerIndex + 1;
+            int score = sortedPlayers[i].coins;
+
+       
+            string rank = (i + 1) + ".";
+            rankingString += $"{rank}<pos=15%>Spieler {pID}:<pos=75%>{score} Coins\n";
+        }
+
+        winText.text = rankingString;
     }
 
     public void Replay()

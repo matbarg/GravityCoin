@@ -35,7 +35,6 @@ public class PlayerInventory : MonoBehaviour
         if (scoreTextField != null)
         {
             scoreTextField.text = coins.ToString(); 
-            // Oder schöner: scoreTextField.text = $"Coins: {coins}";
         }
 
     	Debug.Log($"Spieler {id} hat jetzt {coins} Münzen.");

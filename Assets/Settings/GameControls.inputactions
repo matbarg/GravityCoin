@@ -50,6 +50,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "start",
+                    "type": "Button",
+                    "id": "0d296c42-3a4c-4c9b-8336-f3d2456792ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "menu",
+                    "type": "Button",
+                    "id": "c75456e6-1c32-4785-a5e8-44b5b5f7a848",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -199,7 +217,7 @@
                 {
                     "name": "",
                     "id": "3c7002e5-be5c-454e-8e46-c798f749a204",
-                    "path": "<Keyboard>/slash",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoardRight",
@@ -221,7 +239,7 @@
                 {
                     "name": "",
                     "id": "7e713088-aba4-45b6-893c-e1326c770bca",
-                    "path": "<Keyboard>/comma",
+                    "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoardRight",
@@ -232,7 +250,7 @@
                 {
                     "name": "",
                     "id": "0f8d9973-9490-46f1-bf39-f8c2d3231f84",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoardLeft",
@@ -309,11 +327,33 @@
                 {
                     "name": "",
                     "id": "4ab744cf-0ba0-4cde-985b-461d0877a847",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoardLeft",
                     "action": "Pushen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5fd3b62-5d9b-4c48-991e-49136c04e4ba",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c520f20b-a399-49b2-8221-1ab26640040b",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

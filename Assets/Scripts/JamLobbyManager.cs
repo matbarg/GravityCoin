@@ -35,6 +35,7 @@ public class JamLobbyManager : MonoBehaviour
     {
 
         CheckForJoinInput();
+        
     }
 
     public void NextMap()
@@ -117,35 +118,35 @@ public class JamLobbyManager : MonoBehaviour
 
     private void CheckForJoinInput()
     {
-        // Keyboard Left (W)
-        if (Keyboard.current != null && Keyboard.current.wKey.wasPressedThisFrame)
+        // Keyboard Links: E
+        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (!AlreadyJoined(InputType.KeyboardLeft))
             {
                 AddPlayer(InputType.KeyboardLeft, null);
-                Debug.Log("Keyboard Left joined");
+                Debug.Log("Keyboard Left (E) joined");
             }
         }
 
-        // Keyboard Right (Arrow Up)
-        if (Keyboard.current != null && Keyboard.current.upArrowKey.wasPressedThisFrame)
+        // Keyboard Rechts: M
+        if (Keyboard.current != null && Keyboard.current.mKey.wasPressedThisFrame)
         {
             if (!AlreadyJoined(InputType.KeyboardRight))
             {
                 AddPlayer(InputType.KeyboardRight, null);
-                Debug.Log("Keyboard Right joined");
+                Debug.Log("Keyboard Right (M) joined");
             }
         }
 
-        // Gamepads
+        // Gamepads: R1 zum Joinen
         foreach (var gamepad in Gamepad.all)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.rightShoulder.wasPressedThisFrame)
             {
                 if (!AlreadyJoined(gamepad))
                 {
                     AddPlayer(InputType.Gamepad, gamepad);
-                    Debug.Log("Gamepad joined");
+                    Debug.Log("Gamepad (R1) joined");
                 }
             }
         }
