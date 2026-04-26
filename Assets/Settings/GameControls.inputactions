@@ -271,18 +271,7 @@
                 },
                 {
                     "name": "",
-                    "id": "9e11d041-263c-421d-96cd-36e1df986d97",
-                    "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";KeyBoardRight",
-                    "action": "Bomb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cbf6d32f-c6cf-4421-9e30-821b2f832c16",
+                    "id": "4ab744cf-0ba0-4cde-985b-461d0877a847",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
@@ -293,11 +282,11 @@
                 },
                 {
                     "name": "",
-                    "id": "a97e493a-8911-4a48-ba53-8d2b4c805c02",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "16c89a61-a68a-4c27-9524-28d664bdbc67",
+                    "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";KeyBoardRight",
                     "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -305,44 +294,11 @@
                 {
                     "name": "",
                     "id": "488ee00f-cf13-481c-8889-edaed5a3f8bb",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Pushen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "16c89a61-a68a-4c27-9524-28d664bdbc67",
-                    "path": "<Keyboard>/rightShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";KeyBoardRight",
-                    "action": "Pushen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ab744cf-0ba0-4cde-985b-461d0877a847",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoardLeft",
-                    "action": "Pushen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5fd3b62-5d9b-4c48-991e-49136c04e4ba",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "start",
+                    "action": "Bomb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
