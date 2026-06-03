@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject winPanel;
     public TextMeshProUGUI winText;
+    
+    [Header("Pause Menu")]
+    public GameObject pausePanel;         
+    public GameObject resumeButton;       
+    private bool gameIsPaused = false;    
+    
 
     [Header("Audio")]
     public AudioSource audioSource; 
@@ -23,6 +30,54 @@ public class GameManager : MonoBehaviour
             Instance = this;
         } else {
             Destroy(gameObject);
+        }
+    }
+    
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
+        {
+    
+            if (winPanel != null && !winPanel.activeSelf) 
+            {
+                if (gameIsPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
+            }
+        }
+    }
+    
+    
+    public void ResumeGame()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+            gameIsPaused = false;
+        }
+    }
+    
+    void PauseGame()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+            gameIsPaused = true;
+
+            // Zwingt das EventSystem, den Resume-Button zu markieren (für Gamepad)
+            if (resumeButton != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(resumeButton);
+            }
         }
     }
 
