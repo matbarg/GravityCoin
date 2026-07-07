@@ -2437,6 +2437,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7419563255114085396, guid: db6be236539122844947127b104fc830, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1436222349}
+    - target: {fileID: 7419563255114085396, guid: db6be236539122844947127b104fc830, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 952422604}
+    - target: {fileID: 7419563255114085396, guid: db6be236539122844947127b104fc830, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetSelectedGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419563255114085396, guid: db6be236539122844947127b104fc830, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1436222348}
     - target: {fileID: 7660107490402234438, guid: db6be236539122844947127b104fc830, type: 3}
       propertyPath: m_Name
       value: Dimmer
@@ -2446,6 +2462,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db6be236539122844947127b104fc830, type: 3}
+--- !u!1 &155896252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 25547287353341274, guid: db6be236539122844947127b104fc830, type: 3}
+  m_PrefabInstance: {fileID: 155896251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &155896253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7660107490402234438, guid: db6be236539122844947127b104fc830, type: 3}
+  m_PrefabInstance: {fileID: 155896251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &158812605
 GameObject:
   m_ObjectHideFlags: 0
@@ -15940,8 +15966,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   winPanel: {fileID: 1070466928}
   winText: {fileID: 316804110}
-  pausePanel: {fileID: 0}
-  resumeButton: {fileID: 0}
+  pausePanel: {fileID: 1436222349}
+  resumeButton: {fileID: 1436222348}
   audioSource: {fileID: 1022251182}
   winSound: {fileID: 8300000, guid: 42523d9ea90144e6299cff58fe27b34d, type: 3}
 --- !u!82 &1022251182
@@ -22433,6 +22459,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2261411716062011288, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 155896253}
+    - target: {fileID: 2261411716062011288, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 952422604}
+    - target: {fileID: 2261411716062011288, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetSelectedGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261411716062011288, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 155896252}
     - target: {fileID: 4110232918073204031, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -22534,6 +22576,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+--- !u!1 &1436222348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4076723146145798289, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+  m_PrefabInstance: {fileID: 1436222347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1436222349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5075734076333102980, guid: 39e432b723e3d284f8aebb13e69cb2db, type: 3}
+  m_PrefabInstance: {fileID: 1436222347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1442842998
 GameObject:
   m_ObjectHideFlags: 0
