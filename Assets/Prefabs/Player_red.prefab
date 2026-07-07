@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 1016492118817838907}
   - component: {fileID: 893284423044185026}
   - component: {fileID: 2998867155468443200}
+  - component: {fileID: 2812531095997269699}
   m_Layer: 7
   m_Name: Player_red
   m_TagString: Untagged
@@ -97,9 +98,9 @@ Transform:
   m_GameObject: {fileID: 4756779142634574202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 3.4}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4701893228609062797}
   - {fileID: 4184745545214933596}
@@ -188,9 +189,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4469559458332858858
 BoxCollider2D:
@@ -199,7 +200,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756779142634574202}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -464,6 +465,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 58feb81a-906b-4acc-9c4e-1ee98e0b43f4
     m_ActionName: 'Player/Pushen[/DualShock4GamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d296c42-3a4c-4c9b-8336-f3d2456792ac
+    m_ActionName: Player/start
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c75456e6-1c32-4785-a5e8-44b5b5f7a848
+    m_ActionName: Player/menu
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -522,6 +531,43 @@ MonoBehaviour:
   coinPrefab: {fileID: 4113704058504343442, guid: cc77a087492ed40658d1497a01476cda, type: 3}
   spawnRadius: 0.5
   burstForce: 3
+--- !u!70 &2812531095997269699
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756779142634574202}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8ac04a2d1ac8340d2976eda3dcbce170, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.005828917, y: -0.2681298}
+  m_Size: {x: 0.9300531, y: 0.9300531}
+  m_Direction: 0
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0

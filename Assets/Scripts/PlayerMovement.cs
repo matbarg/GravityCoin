@@ -90,9 +90,15 @@ public class PlayerMovement : MonoBehaviour
  
     private bool IsGrounded()
     {
-        Vector2 direction = Vector2.down * gravityDirection; 
-        Vector2 checkPosition = (Vector2)groundCheck.position + direction * 0.1f; 
-        return Physics2D.OverlapCircle(checkPosition, 0.2f, groundLayer);
+        Vector2 direction = Vector2.down * gravityDirection;
+        Vector2 checkPosition = (Vector2)groundCheck.position + direction * 0.15f;
+
+        return Physics2D.OverlapBox(
+            checkPosition,
+            new Vector2(0.8f, 0.25f),
+            0f,
+            groundLayer
+        );
     }
  
     private void Flip()

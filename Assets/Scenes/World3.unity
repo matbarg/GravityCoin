@@ -25090,7 +25090,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.6307551, y: 0.26150966}
+  m_Offset: {x: 1.6307551, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -26223,7 +26223,7 @@ GameObject:
   - component: {fileID: 1637546969}
   - component: {fileID: 1637546972}
   - component: {fileID: 1637546971}
-  - component: {fileID: 1637546970}
+  - component: {fileID: 1637546973}
   m_Layer: 6
   m_Name: Tilemap (33)
   m_TagString: Untagged
@@ -26246,54 +26246,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 346063686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &1637546970
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637546968}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 8ac04a2d1ac8340d2976eda3dcbce170, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.25, y: -1.6}
-  - {x: -0.26, y: 0.2794426}
-  - {x: 3.26, y: 1.9}
-  - {x: 5.12, y: 1.9}
-  - {x: 5.12, y: -0.31}
-  - {x: 3.39, y: -0.31}
-  - {x: -0.24000001, y: -1.5897645}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!483693784 &1637546971
 TilemapRenderer:
   serializedVersion: 2
@@ -26422,6 +26374,59 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!60 &1637546973
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637546968}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8ac04a2d1ac8340d2976eda3dcbce170, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.2033553, y: 1.9685173}
+      - {x: -0.4149263, y: 0.30874646}
+      - {x: -0.16600418, y: -1.516625}
+      - {x: 3.200613, y: -0.2606393}
+      - {x: 5.218764, y: -0.20634985}
+      - {x: 5.1619573, y: 1.7937233}
+  m_UseDelaunayMesh: 1
 --- !u!1 &1648695924
 GameObject:
   m_ObjectHideFlags: 0
