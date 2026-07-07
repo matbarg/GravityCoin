@@ -1376,13 +1376,16 @@ MonoBehaviour:
   planetModels:
   - {fileID: 1428078009}
   - {fileID: 1937047570}
+  - {fileID: 1428078009}
   mapNameText: {fileID: 445476634}
   sceneNames:
   - World1
   - World3
+  - World1_KingOfCoin
   displayNames:
   - Earth
   - Mars
+  - Earth KingOfCoin
 --- !u!4 &501378672
 Transform:
   m_ObjectHideFlags: 0

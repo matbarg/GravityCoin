@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-
+ 
 public class PlayerCombat : MonoBehaviour
 {
     private bool isAttacking = false;
@@ -15,9 +15,9 @@ public class PlayerCombat : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource; 
     public AudioClip swingSound;
-
+ 
     public float maxAttackDuration = 0.5f;
-
+ 
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -28,16 +28,23 @@ public class PlayerCombat : MonoBehaviour
     {
         UpdateHitboxVisual();
     }
-
+ 
     // Update is called once per frame
     void Update()
     {
         
     }
-
+ 
 public void Attack(InputAction.CallbackContext context)
     {
         if (!context.performed || isAttacking) return;
+ 
+        
+        if (KingOfCoinManager.Instance != null)
+        {
+            KingOfCoinPlayer kp = GetComponent<KingOfCoinPlayer>();
+            if (kp != null && kp.isCarrier) return;
+        }
         
         isAttacking = true;
         if (audioSource != null && swingSound != null)
@@ -46,11 +53,10 @@ public void Attack(InputAction.CallbackContext context)
         } 
         Debug.Log("Attack!");
         animator.SetTrigger("Attack");
-
-        // --- NEU: Das Sicherheitsnetz ---
-        // Stoppt alte Timer, falls vorhanden
+ 
+  
         CancelInvoke(nameof(EndAttack)); 
-        // Erzwingt den Reset, falls das Animation Event übersprungen wird
+        
         Invoke(nameof(EndAttack), maxAttackDuration); 
     }
     
@@ -65,24 +71,36 @@ public void Attack(InputAction.CallbackContext context)
             attackRadius,
             playerLayer
         );
-
+ 
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject == gameObject) continue;
-
+ 
 			PlayerMovement movement = hit.GetComponent<PlayerMovement>();
-
+ 
 			if (movement != null)
 			{
     			movement.TakeHit(transform.position);
 			}
-
-            PlayerInventory target = hit.GetComponent<PlayerInventory>();
-
-            if (target != null)
+ 
+            if (KingOfCoinManager.Instance != null)
             {
-                Debug.Log("Target hit.");
-                target.LoseCoins(coinsLostOnHit);
+               
+                KingOfCoinPlayer kp = hit.GetComponent<KingOfCoinPlayer>();
+                if (kp != null && kp.isCarrier)
+                {
+                    KingOfCoinManager.Instance.DropCoin(kp);
+                }
+            }
+            else
+            {
+                //Klassischer Modus: Treffer kostet Coins
+                PlayerInventory target = hit.GetComponent<PlayerInventory>();
+                if (target != null)
+                {
+                    Debug.Log("Target hit.");
+                    target.LoseCoins(coinsLostOnHit);
+                }
             }
 			
 			TriggerHitStop(0.12f);
@@ -90,7 +108,7 @@ public void Attack(InputAction.CallbackContext context)
         
         Invoke(nameof(HideHitbox), 0.1f);
     }
-
+ 
     public void EndAttack()
     {
         isAttacking = false;
@@ -99,7 +117,7 @@ public void Attack(InputAction.CallbackContext context)
     private void OnDrawGizmos()
     {
         if (attackPoint == null) return;
-
+ 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
@@ -113,29 +131,30 @@ public void Attack(InputAction.CallbackContext context)
     {
         SpriteRenderer sr = hitboxVisual.GetComponent<SpriteRenderer>();
     
-        float spriteSize = sr.sprite.bounds.size.x; // LOCAL size of sprite
+        float spriteSize = sr.sprite.bounds.size.x; 
         float diameter = attackRadius * 2f;
-
+ 
         float scale = diameter / spriteSize;
-
+ 
         hitboxVisual.transform.localScale = new Vector3(scale, scale, 1f);
     }
-
+ 
 	public void TriggerHitStop(float duration)
 	{
 		if (isHitStopped) return;
-
+ 
     	isHitStopped = true;
     	Time.timeScale = 0f;
-
+ 
     	StartCoroutine(HitStopCoroutine(duration));
 	}
-
+ 
 	IEnumerator HitStopCoroutine(float duration)
 	{
     	yield return new WaitForSecondsRealtime(duration);
-
+ 
     	Time.timeScale = 1f;
     	isHitStopped = false;
 	}
 }
+ 
