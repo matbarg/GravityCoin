@@ -8,12 +8,15 @@ public class Coin : MonoBehaviour
     private bool canBePickedUp;
     public bool regularSpawn = false;
  
-    // NEU: Wird vom KingOfCoinManager gesetzt. Wenn true, macht das Aufheben
+    // Wird vom KingOfCoinManager gesetzt. Wenn true, macht das Aufheben
     // den Spieler zum Coin-Traeger, statt eine Muenze gutzuschreiben.
     public bool kingMode = false;
  
     [SerializeField] private float pickupDelay = 0.5f;
-    [SerializeField] private float freezeDelay = 0.05f;
+ 
+    [Header("Schweben")]
+    [Tooltip("Wie stark der Coin nach dem Wegfliegen ausbremst. Hoeher = stoppt schneller.")]
+    [SerializeField] private float floatDamping = 0.8f;
  
     [Header("Audio")]
     public AudioClip collectSound;
@@ -27,19 +30,20 @@ public class Coin : MonoBehaviour
     {
         InitializePhysics();
         StartCoroutine(EnablePickup());
-        StartCoroutine(FreezeAfterDelay());
     }
  
     private void InitializePhysics()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.gravityScale = 0f;
-        rb.linearDamping = 3f;
-        rb.angularDamping = 3f;
+        rb.gravityScale = 0f;                 // Weltall: kein Fallen, nur schweben
+        rb.linearDamping = floatDamping;      // bremst den Coin sanft aus
+        rb.angularDamping = floatDamping;
     }
  
     public void AddImpulse(Vector2 force)
     {
+        // Coin ist evtl. gerade eingeschlafen -> aufwecken, dann schubsen
+        rb.WakeUp();
         rb.AddForce(force, ForceMode2D.Impulse);
     }
  
@@ -49,31 +53,13 @@ public class Coin : MonoBehaviour
         canBePickedUp = true;
     }
  
-    private IEnumerator FreezeAfterDelay()
-    {
-        yield return new WaitForSeconds(freezeDelay);
- 
-        // stop motion
-        rb.linearVelocity = Vector2.zero;
-        rb.angularVelocity = 0f;
- 
-        // fully disable physics simulation
-        rb.Sleep();
- 
-        // optional alternative (more “hard stop”):
-        // rb.bodyType = RigidbodyType2D.Kinematic;
-    }
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!canBePickedUp) return;
-        
-        Debug.Log("coin collision");
  
         // --- King of the Coin: Aufheben macht den Spieler zum Traeger ---
         if (kingMode && KingOfCoinManager.Instance != null)
         {
-            // Nur echte Spieler aufheben lassen
             if (other.GetComponent<PlayerMovement>() != null)
             {
                 KingOfCoinManager.Instance.OnCoinPickedUp(other.gameObject);
@@ -105,4 +91,3 @@ public class Coin : MonoBehaviour
         }
     }
 }
- 
