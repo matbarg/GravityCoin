@@ -20968,7 +20968,7 @@ MonoBehaviour:
   winPanel: {fileID: 1070466928}
   winText: {fileID: 316804110}
   audioSource: {fileID: 0}
-  winSound: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 42523d9ea90144e6299cff58fe27b34d, type: 3}
 --- !u!4 &1609621731
 Transform:
   m_ObjectHideFlags: 0

@@ -1792,15 +1792,18 @@ MonoBehaviour:
   - {fileID: 1428078009}
   - {fileID: 1937047570}
   - {fileID: 1428078009}
+  - {fileID: 1937047570}
   mapNameText: {fileID: 445476634}
   sceneNames:
   - World1
   - World3
   - World1_KingOfCoin
+  - World3_KingOfCoin
   displayNames:
   - Earth
   - Mars
   - Earth
+  - Mars
   descriptions:
   - "Sammle die Coins, die \xFCberall auftauchen. Schlage deine Gegner, damit sie
     ihre Coins verlieren und schnapp sie dir. Wer als Erster 10 Coins hat, gewinnt
@@ -1812,10 +1815,15 @@ MonoBehaviour:
     ist daf\xFCr aber langsamer und kann nicht angreifen. Wirst du getroffen, verlierst
     du den Coin. Wer als Erster genug Zeit sammelt (oder nach Ablauf die meiste hat),
     gewinnt."
+  - "Es gibt nur einen Coin. Wer ihn tr\xE4gt, sammelt Zeit und bekommt die Krone 
+    ist daf\xFCr aber langsamer und kann nicht angreifen. Wirst du getroffen, verlierst
+    du den Coin. Wer als Erster genug Zeit sammelt (oder nach Ablauf die meiste hat),
+    gewinnt."
   descriptionText: {fileID: 1434907121}
   modusDescriptions:
   - 'Modus: Collect Coins'
   - 'Modus: Collect Coins'
+  - 'Modus: King of the Coin'
   - 'Modus: King of the Coin'
   modusDescriptionText: {fileID: 168799912}
 --- !u!4 &501378672

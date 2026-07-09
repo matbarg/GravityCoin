@@ -277,7 +277,7 @@ public class KingOfCoinManager : MonoBehaviour
             if (currentCarrier != null)
             {
                 int id = GetPlayerId(currentCarrier.gameObject);
-                carrierTimerText.text = $"Spieler {id} haelt den Coin!";
+                carrierTimerText.text = $"Spieler {id} hält den Coin!";
             }
             else
             {
