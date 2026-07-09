@@ -8,101 +8,119 @@ public class JamLobbyManager : MonoBehaviour
     [Header("UI Astronauten (Join Logik)")]
     public GameObject[] characterModels;
 
-    [Header("Map Auswahl UI")] public GameObject[] planetModels;
+    [Header("Map Auswahl UI")]
+    public GameObject[] planetModels;
     public TextMeshProUGUI mapNameText;
 
-    [Header("Map Daten")] public string[] sceneNames;
+    [Header("Map Daten")]
+    public string[] sceneNames;
     public string[] displayNames;
-    private int currentMapIndex = 0;
-    
+
     [TextArea] public string[] descriptions;
     public TMP_Text descriptionText;
-    
+
     [TextArea] public string[] modusDescriptions;
-    public TMP_Text modusDescriptionText; 
+    public TMP_Text modusDescriptionText;
+
+    [Header("Map/Modus Aufteilung")]
+    [Tooltip("Wie viele Maps es pro Modus gibt. Die Arrays sind sortiert: " +
+             "erst ALLE Maps von Modus 0, dann ALLE Maps von Modus 1, usw. " +
+             "Beispiel: World1, World3, World1_KingOfCoin, World3_KingOfCoin -> hier 2.")]
+    public int mapsPerMode = 2;
+
+    private int currentMapIndex = 0;   
+    private int currentModeIndex = 0;   
+
+   
+    private int ModeCount => (mapsPerMode > 0) ? Mathf.Max(1, sceneNames.Length / mapsPerMode) : 1;
+
+    
+    private int FlatIndex => currentModeIndex * mapsPerMode + currentMapIndex;
 
     void Start()
     {
         PlayerSessionData.ResetLobby();
 
         foreach (var model in characterModels)
-        {
             if (model != null) model.SetActive(false);
-        }
+
         foreach (var planet in planetModels)
-        {
             if (planet != null) planet.SetActive(false);
-        }
 
         UpdateMapUI();
     }
 
     void Update()
     {
-
         CheckForJoinInput();
-        
     }
+
+  
 
     public void NextMap()
     {
-        // Aktuellen Planeten ausschalten
-        planetModels[currentMapIndex].SetActive(false);
-
-        // Index erhöhen (und am Ende wieder bei 0 starten)
-        currentMapIndex = (currentMapIndex + 1) % sceneNames.Length;
-
+        currentMapIndex = (currentMapIndex + 1) % mapsPerMode;
         UpdateMapUI();
     }
 
     public void PreviousMap()
     {
-        // Aktuellen Planeten ausschalten
-        planetModels[currentMapIndex].SetActive(false);
-
-        // Index verringern (und am Anfang wieder zum Ende springen)
         currentMapIndex--;
-        if (currentMapIndex < 0) currentMapIndex = sceneNames.Length - 1;
-
+        if (currentMapIndex < 0) currentMapIndex = mapsPerMode - 1;
         UpdateMapUI();
     }
 
+  
+
+    public void NextMode()
+    {
+        currentModeIndex = (currentModeIndex + 1) % ModeCount;
+        UpdateMapUI();
+    }
+
+    public void PreviousMode()
+    {
+        currentModeIndex--;
+        if (currentModeIndex < 0) currentModeIndex = ModeCount - 1;
+        UpdateMapUI();
+    }
+
+  
+
     private void UpdateMapUI()
     {
-        // Neuen Planeten aktivieren
-        if (currentMapIndex < planetModels.Length)
-            planetModels[currentMapIndex].SetActive(true);
+        int idx = FlatIndex;
 
-        // Text aktualisieren
-        if (mapNameText != null && currentMapIndex < displayNames.Length)
-            mapNameText.text = displayNames[currentMapIndex];
-        
-        if (descriptionText != null && currentMapIndex < descriptions.Length)
-            descriptionText.text = descriptions[currentMapIndex];
-        
-        if (modusDescriptionText != null && currentMapIndex < modusDescriptions.Length)
-            modusDescriptionText.text = modusDescriptions[currentMapIndex];
+        // alle Planeten aus, nur den aktuellen an
+        foreach (var planet in planetModels)
+            if (planet != null) planet.SetActive(false);
+
+        if (idx < planetModels.Length && planetModels[idx] != null)
+            planetModels[idx].SetActive(true);
+
+        if (mapNameText != null && idx < displayNames.Length)
+            mapNameText.text = displayNames[idx];
+
+        if (descriptionText != null && idx < descriptions.Length)
+            descriptionText.text = descriptions[idx];
+
+        if (modusDescriptionText != null && idx < modusDescriptions.Length)
+            modusDescriptionText.text = modusDescriptions[idx];
     }
+
+    
 
     bool AlreadyJoined(InputType type)
     {
         foreach (var player in PlayerSessionData.players)
-        {
-            if (player.inputType == type)
-                return true;
-        }
-
+            if (player.inputType == type) return true;
         return false;
     }
 
     bool AlreadyJoined(Gamepad pad)
     {
         foreach (var player in PlayerSessionData.players)
-        {
-            if (player.gamepad == pad)
-                return true;
-        }
-
+            if (player.gamepad == pad) return true;
         return false;
     }
 
@@ -113,9 +131,7 @@ public class JamLobbyManager : MonoBehaviour
             inputType = type,
             gamepad = pad
         };
-
         PlayerSessionData.players.Add(newPlayer);
-
         int slotIndex = PlayerSessionData.players.Count - 1;
         ActivateUI(slotIndex);
     }
@@ -123,14 +139,11 @@ public class JamLobbyManager : MonoBehaviour
     private void ActivateUI(int index)
     {
         if (index < characterModels.Length && characterModels[index] != null)
-        {
             characterModels[index].SetActive(true);
-        }
     }
 
     private void CheckForJoinInput()
     {
-        // Keyboard Links: E
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             if (!AlreadyJoined(InputType.KeyboardLeft))
@@ -140,7 +153,6 @@ public class JamLobbyManager : MonoBehaviour
             }
         }
 
-        // Keyboard Rechts: M
         if (Keyboard.current != null && Keyboard.current.mKey.wasPressedThisFrame)
         {
             if (!AlreadyJoined(InputType.KeyboardRight))
@@ -150,7 +162,6 @@ public class JamLobbyManager : MonoBehaviour
             }
         }
 
-        // Gamepads: R1 zum Joinen
         foreach (var gamepad in Gamepad.all)
         {
             if (gamepad.rightShoulder.wasPressedThisFrame)
@@ -172,14 +183,14 @@ public class JamLobbyManager : MonoBehaviour
             return;
         }
 
-        if (sceneNames.Length > 0 && currentMapIndex < sceneNames.Length)
+        int idx = FlatIndex;
+        if (sceneNames.Length > 0 && idx < sceneNames.Length)
         {
-            string sceneToLoad = sceneNames[currentMapIndex];
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(sceneNames[idx]);
         }
         else
         {
-            Debug.LogError("Fehler: Du hast keine Scene Names im Inspector eingetragen!");
+            Debug.LogError("Fehler: Keine passende Scene fuer Map/Modus gefunden!");
         }
     }
 }

@@ -3599,7 +3599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: timer
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
   m_sharedMaterial: {fileID: -8603767424596496327, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
@@ -27626,7 +27626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect Coins
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
   m_sharedMaterial: {fileID: -8603767424596496327, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}

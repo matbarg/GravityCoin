@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: timer
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
   m_sharedMaterial: {fileID: -8603767424596496327, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
@@ -12268,6 +12268,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: World1
       objectReference: {fileID: 0}
+    - target: {fileID: 1489774831314933386, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489774831314933386, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489774831314933386, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489774831314933386, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2001534375910172013, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -21622,7 +21638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect Coins
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
   m_sharedMaterial: {fileID: -8603767424596496327, guid: 8d4026a088ae3eb12ab369edf20513a7, type: 2}
