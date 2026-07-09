@@ -35,14 +35,14 @@ public class Coin : MonoBehaviour
     private void InitializePhysics()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.gravityScale = 0f;                 // Weltall: kein Fallen, nur schweben
-        rb.linearDamping = floatDamping;      // bremst den Coin sanft aus
+        rb.gravityScale = 0f;                 
+        rb.linearDamping = floatDamping;     
         rb.angularDamping = floatDamping;
     }
  
     public void AddImpulse(Vector2 force)
     {
-        // Coin ist evtl. gerade eingeschlafen -> aufwecken, dann schubsen
+       
         rb.WakeUp();
         rb.AddForce(force, ForceMode2D.Impulse);
     }
@@ -56,8 +56,7 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!canBePickedUp) return;
- 
-        // --- King of the Coin: Aufheben macht den Spieler zum Traeger ---
+        
         if (kingMode && KingOfCoinManager.Instance != null)
         {
             if (other.GetComponent<PlayerMovement>() != null)
@@ -65,7 +64,7 @@ public class Coin : MonoBehaviour
                 KingOfCoinManager.Instance.OnCoinPickedUp(other.gameObject);
  
                 if (collectSound != null)
-                    AudioSource.PlayClipAtPoint(collectSound, transform.position);
+                    AudioSource.PlayClipAtPoint(collectSound, transform.position,  3.0f);
  
                 Destroy(gameObject);
             }
@@ -80,7 +79,7 @@ public class Coin : MonoBehaviour
             inv.AddCoin();
             if (collectSound != null)
             {
-                AudioSource.PlayClipAtPoint(collectSound, transform.position);
+                AudioSource.PlayClipAtPoint(collectSound, transform.position, 3.0f);
             }
  
             if (regularSpawn)
