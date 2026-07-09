@@ -14,6 +14,12 @@ public class JamLobbyManager : MonoBehaviour
     [Header("Map Daten")] public string[] sceneNames;
     public string[] displayNames;
     private int currentMapIndex = 0;
+    
+    [TextArea] public string[] descriptions;
+    public TMP_Text descriptionText;
+    
+    [TextArea] public string[] modusDescriptions;
+    public TMP_Text modusDescriptionText; 
 
     void Start()
     {
@@ -70,6 +76,12 @@ public class JamLobbyManager : MonoBehaviour
         // Text aktualisieren
         if (mapNameText != null && currentMapIndex < displayNames.Length)
             mapNameText.text = displayNames[currentMapIndex];
+        
+        if (descriptionText != null && currentMapIndex < descriptions.Length)
+            descriptionText.text = descriptions[currentMapIndex];
+        
+        if (modusDescriptionText != null && currentMapIndex < modusDescriptions.Length)
+            modusDescriptionText.text = modusDescriptions[currentMapIndex];
     }
 
     bool AlreadyJoined(InputType type)
