@@ -11828,6 +11828,10 @@ PrefabInstance:
       propertyPath: m_CompositeOperation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3834714083960599676, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46
+      objectReference: {fileID: 0}
     - target: {fileID: 4084938072439470420, guid: e39f7e3f597733a30b04b1926b30e9e9, type: 3}
       propertyPath: m_CompositeOperation
       value: 1
