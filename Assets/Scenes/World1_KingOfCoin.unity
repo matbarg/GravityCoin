@@ -13985,6 +13985,8 @@ MonoBehaviour:
   - {fileID: 1962565290}
   - {fileID: 2008903334}
   - {fileID: 1353615054}
+  enableBoost: 0
+  playerBoostBars: []
 --- !u!114 &1022251181
 MonoBehaviour:
   m_ObjectHideFlags: 0

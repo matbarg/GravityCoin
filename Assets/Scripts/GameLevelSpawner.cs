@@ -1,15 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameLevelSpawner : MonoBehaviour
 {
     [Header("Spieler-Prefabs")]
-    public GameObject[] playerPrefabs; 
+    public GameObject[] playerPrefabs;
     public Transform[] spawnPoints;
 
     [Header("UI Textfelder (Index 0 = Spieler 1, etc.)")]
     public TextMeshProUGUI[] playerTextFields;
+
+    [Header("Boost")]
+    [Tooltip("Boost fuer diese Szene an/aus. In Earth-Szenen an, in KotC-Szenen aus.")]
+    public bool enableBoost = true;
+    [Tooltip("Boost-Ladebalken pro Spieler (Index 0 = Spieler 1). Fill-Images.")]
+    public Image[] playerBoostBars;
 
     void Start()
     {
@@ -52,7 +59,6 @@ public class GameLevelSpawner : MonoBehaviour
 
         GameObject player = input.gameObject;
 
-        // IMPORTANT: do NOT rely on input.playerIndex anymore
         if (spawnPoints.Length > 0)
         {
             player.transform.position = spawnPoints[index % spawnPoints.Length].position;
@@ -64,6 +70,16 @@ public class GameLevelSpawner : MonoBehaviour
         {
             inventory.scoreTextField = playerTextFields[index];
             inventory.scoreTextField.text = "0";
+        }
+
+        // --- Boost einrichten ---
+        PlayerBoost boost = player.GetComponent<PlayerBoost>();
+        if (boost != null)
+        {
+            boost.boostEnabled = enableBoost;
+
+            if (playerBoostBars != null && index < playerBoostBars.Length)
+                boost.boostBar = playerBoostBars[index];
         }
     }
 }

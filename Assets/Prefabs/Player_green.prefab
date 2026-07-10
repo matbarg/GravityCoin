@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 893284423044185026}
   - component: {fileID: 2998867155468443200}
   - component: {fileID: 6182921197485642122}
+  - component: {fileID: -1004413861885202235}
   m_Layer: 7
   m_Name: Player_green
   m_TagString: Untagged
@@ -569,6 +570,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.005828917, y: -0.2681298}
   m_Size: {x: 0.9300531, y: 0.9300531}
   m_Direction: 0
+--- !u!114 &-1004413861885202235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756779142634574202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972082e647594976bce5bea8a4911ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBoost
+  boostEnabled: 1
+  boostMultiplier: 1.5
+  boostDuration: 2
+  rechargeMoving: 0.05
+  rechargeStanding: 0.25
+  standingThreshold: 0.5
+  keyboardLeftBoostKey: 39
+  keyboardRightBoostKey: 7
+  boostBar: {fileID: 0}
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0
