@@ -45,6 +45,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartRoundCountdown());
+        
+        if (MusicManager.Instance == null)
+        {
+            Debug.LogError("Kein MusicManager in der Szene gefunden.");
+            return;
+        }
+
+        MusicManager.Instance.PlayGameMusic();
     }
 
     void Update()
