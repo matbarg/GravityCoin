@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
@@ -19,19 +20,18 @@ public class GameManager : MonoBehaviour
     private bool gameIsPaused = false;
 
     [Header("Start-Countdown")]
-    public TMP_Text countdownText;         
+    public TMP_Text countdownText;
     public int countdownSeconds = 3;
     public string goText = "Los!";
 
-   
     public static event System.Action OnRoundStart;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip winSound;
     [Tooltip("Komplette Countdown-Aufnahme ")]
-    public AudioClip countdownVoice;        
-    public AudioClip goSound;             
+    public AudioClip countdownVoice;
+    public AudioClip goSound;
 
     void Awake()
     {
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartRoundCountdown());
-        
+
         if (MusicManager.Instance == null)
         {
             Debug.LogError("Kein MusicManager in der Szene gefunden.");
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
+        if (PausePressedThisFrame())
         {
             if (winPanel != null && !winPanel.activeSelf)
             {
@@ -73,18 +73,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
- 
+    // Pause: Escape (Tastatur) ODER Start/Options-Knopf (jeder Gamepad).
+    // Nutzt das neue Input System -> controller-unabhaengig, kein fester Button 7 mehr.
+    private bool PausePressedThisFrame()
+    {
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            return true;
+
+        foreach (var gp in Gamepad.all)
+        {
+            if (gp.startButton.wasPressedThisFrame)
+                return true;
+        }
+
+        return false;
+    }
 
     private IEnumerator StartRoundCountdown()
     {
-      
         yield return null;
 
         LockAllPlayers(true);
 
         if (countdownText != null) countdownText.gameObject.SetActive(true);
 
-        
         if (audioSource != null && countdownVoice != null)
             audioSource.PlayOneShot(countdownVoice);
 
@@ -92,7 +104,6 @@ public class GameManager : MonoBehaviour
         {
             if (countdownText != null) countdownText.text = i.ToString();
 
-        
             float t = 0f;
             while (t < 1f)
             {
@@ -106,7 +117,6 @@ public class GameManager : MonoBehaviour
         if (audioSource != null && goSound != null)
             audioSource.PlayOneShot(goSound);
 
-       
         LockAllPlayers(false);
         OnRoundStart?.Invoke();
 
@@ -120,8 +130,6 @@ public class GameManager : MonoBehaviour
         foreach (var p in players)
             p.SetControlsEnabled(!locked);
     }
-
-   
 
     public void ResumeGame()
     {
@@ -149,8 +157,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-
     public void ShowWinScreen(int winnerID)
     {
         if (winPanel != null)
@@ -174,7 +180,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < sortedPlayers.Count; i++)
         {
-            int pID = sortedPlayers[i].GetComponent<UnityEngine.InputSystem.PlayerInput>().playerIndex + 1;
+            int pID = sortedPlayers[i].GetComponent<PlayerInput>().playerIndex + 1;
             int score = sortedPlayers[i].coins;
 
             string rank = (i + 1) + ".";
