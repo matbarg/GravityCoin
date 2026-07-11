@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,10 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float speedMultiplier = 1f;
 
-  
     private bool controlsLocked = false;
     public bool ControlsLocked => controlsLocked;
-    
 
     [Header("Gravity Settings")]
     public bool requireGroundToSwitch = true;
@@ -32,18 +31,32 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float staggerDuration = 0.2f;
 	[SerializeField] private float knockbackForce = 10f;
 
+    [Header("Treffer-Aufblinken")]
+    [Tooltip("Farbe, in der der Spieler bei einem Treffer kurz aufblinkt.")]
+    public Color hitFlashColor = new Color(1f, 0.3f, 0.3f);   // roetlich
+    [Tooltip("Wie lange das Aufblinken dauert (Sekunden).")]
+    public float hitFlashDuration = 0.1f;
+
     [Header("Sounds")]
     public AudioSource audioSource;
     public AudioClip jumpSound;
 
     private Animator animator;
 
+    // Sprites fuer das Aufblinken (mit Original-Farben zum Zuruecksetzen)
+    private SpriteRenderer[] sprites;
+    private Color[] originalColors;
 
     private bool InputBlocked => isStaggered || controlsLocked;
 
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+        originalColors = new Color[sprites.Length];
+        for (int i = 0; i < sprites.Length; i++)
+            originalColors[i] = sprites[i].color;
     }
 
     void Update()
@@ -159,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
     {
         speedMultiplier = multiplier;
     }
-    
+
     public void SetControlsEnabled(bool enabled)
     {
         controlsLocked = !enabled;
@@ -183,7 +196,23 @@ public class PlayerMovement : MonoBehaviour
     	rb.linearVelocity = Vector2.zero;
     	rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
 
+    	// Treffer-Aufblinken
+    	StartCoroutine(HitFlash());
+
     	Invoke(nameof(EndStagger), staggerDuration);
+	}
+
+	private IEnumerator HitFlash()
+	{
+    	// alle Sprites einfaerben
+    	for (int i = 0; i < sprites.Length; i++)
+        	if (sprites[i] != null) sprites[i].color = hitFlashColor;
+
+    	yield return new WaitForSeconds(hitFlashDuration);
+
+    	// Original-Farben zuruecksetzen
+    	for (int i = 0; i < sprites.Length; i++)
+        	if (sprites[i] != null) sprites[i].color = originalColors[i];
 	}
 
 	private void EndStagger()
