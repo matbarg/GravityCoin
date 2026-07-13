@@ -29,6 +29,8 @@ public class JamLobbyManager : MonoBehaviour
     public int mapsPerMode = 2;
     [Header("Demo Hinweise")]
     public GameObject demoMapText;
+    public GameObject demoMapPadlock;
+
     public GameObject demoModusText;
     public GameObject demoModusPadlock;
 
@@ -110,13 +112,17 @@ public class JamLobbyManager : MonoBehaviour
 
         if (modusDescriptionText != null && idx < modusDescriptions.Length)
             modusDescriptionText.text = modusDescriptions[idx];
+        // Zweite Map gesperrt
         bool lockedMapSelected = currentMapIndex == 1;
 
         if (demoMapText != null)
             demoMapText.SetActive(lockedMapSelected);
 
+        if (demoMapPadlock != null)
+            demoMapPadlock.SetActive(lockedMapSelected);
 
-        // Zweiter Spielmodus ist in der Demo gesperrt
+
+        // Zweiter Spielmodus gesperrt
         bool lockedModeSelected = currentModeIndex == 1;
 
         if (demoModusText != null)
