@@ -8,8 +8,7 @@ public class Coin : MonoBehaviour
     private bool canBePickedUp;
     public bool regularSpawn = false;
  
-    // Wird vom KingOfCoinManager gesetzt. Wenn true, macht das Aufheben
-    // den Spieler zum Coin-Traeger, statt eine Muenze gutzuschreiben.
+ 
     public bool kingMode = false;
  
     [SerializeField] private float pickupDelay = 0.5f;
@@ -70,8 +69,7 @@ public class Coin : MonoBehaviour
             }
             return;
         }
- 
-        // --- Klassischer Modus ---
+        
         PlayerInventory inv = other.GetComponent<PlayerInventory>();
  
         if (inv != null)

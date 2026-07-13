@@ -32,6 +32,10 @@ public class PlayerBoost : MonoBehaviour
     [Header("UI")]
     public Image boostBar;   // Fill-Image, wird meist vom Spawner zugewiesen
 
+    [Header("Sprint-Effekt")]
+    [Tooltip("Trail Renderer, der beim Sprinten sichtbar wird (am Spieler).")]
+    public TrailRenderer sprintTrail;
+
     private float tank = 1f;              // 0..1
     private bool wasBoosting = false;
     private PlayerMovement movement;
@@ -41,6 +45,9 @@ public class PlayerBoost : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         playerInput = GetComponent<PlayerInput>();
+
+        // Trail beim Start aus
+        if (sprintTrail != null) sprintTrail.emitting = false;
     }
 
     void Update()
@@ -49,6 +56,7 @@ public class PlayerBoost : MonoBehaviour
         {
             if (wasBoosting) { movement.SetSpeedMultiplier(1f); wasBoosting = false; }
             if (boostBar != null) boostBar.fillAmount = 0f;
+            SetTrail(false);
             return;
         }
 
@@ -74,7 +82,17 @@ public class PlayerBoost : MonoBehaviour
             if (tank > 1f) tank = 1f;
         }
 
+        // Trail nur waehrend des Sprints sichtbar
+        SetTrail(boosting);
+
         if (boostBar != null) boostBar.fillAmount = tank;
+    }
+
+    private void SetTrail(bool on)
+    {
+        if (sprintTrail == null) return;
+        if (sprintTrail.emitting != on)
+            sprintTrail.emitting = on;
     }
 
     private bool IsStanding()

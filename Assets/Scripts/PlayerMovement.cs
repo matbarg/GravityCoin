@@ -33,9 +33,15 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Treffer-Aufblinken")]
     [Tooltip("Farbe, in der der Spieler bei einem Treffer kurz aufblinkt.")]
-    public Color hitFlashColor = new Color(1f, 0.3f, 0.3f);   // roetlich
+    public Color hitFlashColor = new Color(1f, 0.3f, 0.3f);
     [Tooltip("Wie lange das Aufblinken dauert (Sekunden).")]
     public float hitFlashDuration = 0.1f;
+
+    [Header("Treffer-Partikel")]
+    [Tooltip("Partikel-Prefab, das bei einem Treffer kurz aufplatzt.")]
+    public GameObject hitParticlePrefab;
+    [Tooltip("Versatz vom Spieler-Mittelpunkt (z.B. leicht nach oben oder Z nach vorne).")]
+    public Vector3 hitParticleOffset = Vector3.zero;
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -43,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
 
-    // Sprites fuer das Aufblinken (mit Original-Farben zum Zuruecksetzen)
     private SpriteRenderer[] sprites;
     private Color[] originalColors;
 
@@ -199,18 +204,28 @@ public class PlayerMovement : MonoBehaviour
     	// Treffer-Aufblinken
     	StartCoroutine(HitFlash());
 
+    	// Treffer-Partikel - Kopie SOFORT aktivieren, egal wie das Prefab
+    	// gespeichert ist (sonst spielt ein inaktives Prefab nichts ab)
+    	if (hitParticlePrefab != null)
+    	{
+        	GameObject fx = Instantiate(
+            	hitParticlePrefab,
+            	transform.position + hitParticleOffset,
+            	Quaternion.identity
+        	);
+        	fx.SetActive(true);
+    	}
+
     	Invoke(nameof(EndStagger), staggerDuration);
 	}
 
 	private IEnumerator HitFlash()
 	{
-    	// alle Sprites einfaerben
     	for (int i = 0; i < sprites.Length; i++)
         	if (sprites[i] != null) sprites[i].color = hitFlashColor;
 
     	yield return new WaitForSeconds(hitFlashDuration);
 
-    	// Original-Farben zuruecksetzen
     	for (int i = 0; i < sprites.Length; i++)
         	if (sprites[i] != null) sprites[i].color = originalColors[i];
 	}

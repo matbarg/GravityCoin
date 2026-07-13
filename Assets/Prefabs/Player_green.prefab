@@ -265,6 +265,8 @@ MonoBehaviour:
   knockbackForce: 10
   hitFlashColor: {r: 0.7094492, g: 1, b: 0.6666667, a: 1}
   hitFlashDuration: 0.1
+  hitParticlePrefab: {fileID: 5194758340803221005, guid: 3c782f56a7518b24c80a5a3397c84116, type: 3}
+  hitParticleOffset: {x: 0, y: 0, z: 0}
   audioSource: {fileID: -5116897442592393926}
   jumpSound: {fileID: 8300000, guid: fd3202bd2b5994b31959fa27355df2eb, type: 3}
 --- !u!82 &-5116897442592393926
