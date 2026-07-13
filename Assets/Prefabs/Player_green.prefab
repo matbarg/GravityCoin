@@ -593,7 +593,7 @@ MonoBehaviour:
   rechargeMoving: 0.05
   rechargeStanding: 0.25
   standingThreshold: 0.5
-  keyboardLeftBoostKey: 51
+  keyboardLeftBoostKey: 55
   keyboardRightBoostKey: 7
   boostBar: {fileID: 0}
   sprintTrail: {fileID: 4127779468991625019}

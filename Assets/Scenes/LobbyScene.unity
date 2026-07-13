@@ -2226,20 +2226,20 @@ MonoBehaviour:
   - Earth
   - Mars
   descriptions:
-  - "Sammle die Coins, die \xFCberall auftauchen. Schlage deine Gegner, damit sie
-    ihre Coins verlieren und schnapp sie dir. Wer als Erster 10 Coins hat, gewinnt
-    die Runde."
-  - "Sammle die Coins, die \xFCberall auftauchen. Schlage deine Gegner, damit sie
-    ihre Coins verlieren und schnapp sie dir. Wer als Erster 10 Coins hat, gewinnt
-    die Runde."
-  - "Es gibt nur einen Coin. Wer ihn tr\xE4gt, sammelt Zeit und bekommt die Krone 
-    ist daf\xFCr aber langsamer und kann nicht angreifen. Wirst du getroffen, verlierst
-    du den Coin. Wer als Erster genug Zeit sammelt (oder nach Ablauf die meiste hat),
-    gewinnt."
-  - "Es gibt nur einen Coin. Wer ihn tr\xE4gt, sammelt Zeit und bekommt die Krone 
-    ist daf\xFCr aber langsamer und kann nicht angreifen. Wirst du getroffen, verlierst
-    du den Coin. Wer als Erster genug Zeit sammelt (oder nach Ablauf die meiste hat),
-    gewinnt."
+  - Collect the coins that appear around the map. Hit your opponents to make them
+    drop their coins, then grab them. The first player to collect 10 coins wins the
+    round.
+  - Collect the coins that appear around the map. Hit your opponents to make them
+    drop their coins, then grab them. The first player to collect 10 coins wins the
+    round.
+  - There is only one coin. While carrying it, you earn time and wear the crown,
+    but you move more slowly and cannot attack. If you get hit, you drop the coin.
+    The first player to reach the target time or the player with the most time when
+    the round ends ->wins.
+  - There is only one coin. While carrying it, you earn time and wear the crown,
+    but you move more slowly and cannot attack. If you get hit, you drop the coin.
+    The first player to reach the target time or the player with the most time when
+    the round ends ->wins.
   descriptionText: {fileID: 1434907121}
   modusDescriptions:
   - Collect Coins
@@ -5265,7 +5265,7 @@ PrefabInstance:
       propertyPath: m_text
       value: "Keyboard Left\nJump \t\t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_77\">\n\nAttack      
         \t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_4\">\n\nGravity     \t<Sprite
-        Name=\"T_Keyboard_Mouse_Key_White_Sprite_16\">\n\nRun\t\t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_77\">\n\nKeyboard
+        Name=\"T_Keyboard_Mouse_Key_White_Sprite_16\">\n\nRun\t\t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_81\">\n\nKeyboard
         Right\nJump \t\t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_87\">\n\nAttack
         \t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_12\">\n\nGravity    \t<Sprite
         Name=\"T_Keyboard_Mouse_Key_White_Sprite_13\">\n\nRun\t\t<Sprite Name=\"T_Keyboard_Mouse_Key_White_Sprite_52\">"
