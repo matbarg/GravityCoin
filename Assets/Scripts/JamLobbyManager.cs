@@ -27,6 +27,10 @@ public class JamLobbyManager : MonoBehaviour
              "erst ALLE Maps von Modus 0, dann ALLE Maps von Modus 1, usw. " +
              "Beispiel: World1, World3, World1_KingOfCoin, World3_KingOfCoin -> hier 2.")]
     public int mapsPerMode = 2;
+    [Header("Demo Hinweise")]
+    public GameObject demoMapText;
+    public GameObject demoModusText;
+    public GameObject demoModusPadlock;
 
     private int currentMapIndex = 0;   
     private int currentModeIndex = 0;   
@@ -106,6 +110,20 @@ public class JamLobbyManager : MonoBehaviour
 
         if (modusDescriptionText != null && idx < modusDescriptions.Length)
             modusDescriptionText.text = modusDescriptions[idx];
+        bool lockedMapSelected = currentMapIndex == 1;
+
+        if (demoMapText != null)
+            demoMapText.SetActive(lockedMapSelected);
+
+
+        // Zweiter Spielmodus ist in der Demo gesperrt
+        bool lockedModeSelected = currentModeIndex == 1;
+
+        if (demoModusText != null)
+            demoModusText.SetActive(lockedModeSelected);
+
+        if (demoModusPadlock != null)
+            demoModusPadlock.SetActive(lockedModeSelected);
     }
 
     
