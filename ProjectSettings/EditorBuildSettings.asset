@@ -11,16 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/World2.unity
     guid: 24dfea773a0ff2710a9aa26eaa78b44b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/World3.unity
     guid: ff65ad237f3dc4905ad2d5fee3d157ca
   - enabled: 1
     path: Assets/Scenes/World1.unity
     guid: 060eb54cd043a434692c62d165fc5623
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/World1_KingOfCoin.unity
     guid: c3e9a9acdcf488743b1ab001a51ac992
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/World3_KingOfCoin.unity
     guid: 57c5d76df2306f94881e5a78c30cf4e8
   m_configObjects:
