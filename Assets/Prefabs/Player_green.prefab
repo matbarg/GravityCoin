@@ -260,7 +260,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   requireGroundToSwitch: 1
-  useCooldownToSwitch: 1
+  useCooldownToSwitch: 0
   gravityCooldownTime: 1
   staggerDuration: 0.2
   knockbackForce: 10
