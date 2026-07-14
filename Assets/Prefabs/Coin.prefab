@@ -113,6 +113,7 @@ MonoBehaviour:
   kingMode: 0
   pickupDelay: 0.2
   floatDamping: 0.8
+  solidCollider: {fileID: 8880483173168086688}
   collectSound: {fileID: 8300000, guid: 0f107842abb21438e86ca6d8af290c05, type: 3}
 --- !u!58 &6049419035346757158
 CircleCollider2D:
