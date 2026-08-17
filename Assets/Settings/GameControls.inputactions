@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pushen",
+                    "name": "UsePowerup",
                     "type": "Button",
                     "id": "58feb81a-906b-4acc-9c4e-1ee98e0b43f4",
                     "expectedControlType": "",
@@ -310,6 +310,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24b950b4-2e12-41d4-8880-7d0a5e31041a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "UsePowerup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90d92045-d277-4ad3-ae7a-b82f9f0daef6",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardLeft",
+                    "action": "UsePowerup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b6e8504-ffdd-4b3c-8659-2c8c87e1a58a",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardRight",
+                    "action": "UsePowerup",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

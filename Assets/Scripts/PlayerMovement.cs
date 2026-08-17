@@ -172,6 +172,20 @@ public class PlayerMovement : MonoBehaviour
             nextGravitySwitchTime = Time.time + gravityCooldownTime;
         }
     }
+    //für Gravity Flip-Powerup. erzwingt Gravity switch
+    public void ForceGravityFlip()
+    {
+        gravityDirection *= -1f;
+        rb.gravityScale *= -1f;
+
+        FlipVertical();
+
+        animator.SetTrigger("Jump");
+
+// sperren von switch
+        hasTouchedGroundSinceSwitch = false;
+        nextGravitySwitchTime = Time.time + gravityCooldownTime;
+    }
 
     public void SetSpeedMultiplier(float multiplier)
     {

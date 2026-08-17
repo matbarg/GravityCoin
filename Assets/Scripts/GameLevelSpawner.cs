@@ -17,6 +17,9 @@ public class GameLevelSpawner : MonoBehaviour
     public bool enableBoost = true;
     [Tooltip("Boost-Ladebalken pro Spieler (Index 0 = Spieler 1). Fill-Images.")]
     public Image[] playerBoostBars;
+    [Header("Powerup")]
+    [Tooltip("Powerup-Icon pro Spieler (Index 0 = Spieler 1). UI Images im Panel.")]
+    public Image[] playerPowerupIcons;
 
     void Start()
     {
@@ -80,6 +83,12 @@ public class GameLevelSpawner : MonoBehaviour
 
             if (playerBoostBars != null && index < playerBoostBars.Length)
                 boost.boostBar = playerBoostBars[index];
+        }
+        PowerupHolder holder = player.GetComponent<PowerupHolder>();
+        if (holder != null)
+        {
+            if (playerPowerupIcons != null && index < playerPowerupIcons.Length)
+                holder.slotIcon = playerPowerupIcons[index];
         }
     }
 }
