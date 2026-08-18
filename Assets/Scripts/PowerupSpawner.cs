@@ -6,6 +6,9 @@ public class PowerupSpawner : MonoBehaviour
     public GameObject powerupPrefab;
     public Transform[] spawnPoints;
 
+    [Header("Welche Powerups spawnen können")]
+    public PowerupType[] possibleTypes;
+    
     [Header("Timing")]
     [Tooltip("Wie lange ein Powerup liegen bleibt, bevor es verschwindet.")]
     public float lifeTime = 10f;
@@ -63,6 +66,12 @@ public class PowerupSpawner : MonoBehaviour
         if (pu != null)
         {
             pu.spawner = this;
+
+            if (possibleTypes != null && possibleTypes.Length > 0)
+            {
+                PowerupType randomType = possibleTypes[Random.Range(0, possibleTypes.Length)];
+                pu.SetType(randomType);   // setzt Typ UND Aussehen
+            }
         }
 
         // Lebens-Timer starten: verschwindet, wenn keiner es nimmt

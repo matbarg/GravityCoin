@@ -248,4 +248,28 @@ public class PlayerMovement : MonoBehaviour
 	{
     	isStaggered = false;
 	}
+    // Wird vom Freeze-Powerup aufgerufen. Friert den Spieler kurz ein.
+    public void Freeze(float duration)
+    {
+        StartCoroutine(FreezeRoutine(duration));
+    }
+
+    private IEnumerator FreezeRoutine(float duration)
+    {
+        // Einfrieren
+        SetControlsEnabled(false);
+        if (animator != null) animator.speed = 0f;
+
+        Color iceColor = new Color(0.54f, 0.85f, 1f); // Hellblau
+        for (int i = 0; i < sprites.Length; i++)
+            if (sprites[i] != null) sprites[i].color = iceColor;
+
+        yield return new WaitForSeconds(duration);
+
+        // Auftauen
+        SetControlsEnabled(true);
+        if (animator != null) animator.speed = 1f;
+        for (int i = 0; i < sprites.Length; i++)
+            if (sprites[i] != null) sprites[i].color = originalColors[i];
+    }
 }

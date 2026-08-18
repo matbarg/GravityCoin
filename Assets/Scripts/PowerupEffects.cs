@@ -26,7 +26,7 @@ public static class PowerupEffects
 
         foreach (PlayerMovement p in allPlayers)
         {
-            
+
             if (p.gameObject == user) continue;
 
             float dist = Vector2.Distance(userPos, p.transform.position);
@@ -35,8 +35,21 @@ public static class PowerupEffects
                 shortestDistance = dist;
                 nearest = p;
             }
+
         }
+
 
         return nearest;
     }
+
+    public static void FreezeNearestEnemy(GameObject user)
+    {
+        PlayerMovement nearest = FindNearestOtherPlayer(user);
+
+        if (nearest != null)
+        {
+            nearest.Freeze(2f); // 2 Sekunden einfrieren
+        }
+    }
+
 }

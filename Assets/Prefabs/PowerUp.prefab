@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 700706276188159873}
   - component: {fileID: 6606053896117492026}
   m_Layer: 0
-  m_Name: G_Switch
+  m_Name: PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,5 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Powerup
   type: 1
+  gravityFlipSprite: {fileID: 21300000, guid: 76889f48ceff08f4d8e4b06a88e0fa5f, type: 3}
+  freezeSprite: {fileID: 3058895691118293505, guid: 43be1a8260bb2804084bd9864b024b6f, type: 3}
   collectSound: {fileID: 0}
   spawner: {fileID: 0}

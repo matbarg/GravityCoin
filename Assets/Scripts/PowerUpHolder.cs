@@ -6,8 +6,12 @@ public class PowerupHolder : MonoBehaviour
 {
     // Welches Powerup wird gerade gehalten (null = Slot leer).
     private PowerupType heldPowerup = PowerupType.None;
-    [Header("Powerup-Sprites (pro Typ)")] public Sprite gravityFlipSprite;
+    
+    [Header("Powerup-Sprites (pro Typ)")]
+    public Sprite gravityFlipSprite;
+    public Sprite freezeSprite;
     public Image slotIcon;
+
 
 
 
@@ -47,8 +51,9 @@ public class PowerupHolder : MonoBehaviour
             case PowerupType.GravityFlip:
                 PowerupEffects.GravityFlipNearestEnemy(gameObject);
                 break;
-
-            // Weitere Powerups 
+            case PowerupType.Freeze:
+                PowerupEffects.FreezeNearestEnemy(gameObject);
+                break;
 
         }
     }
@@ -70,7 +75,9 @@ public class PowerupHolder : MonoBehaviour
             case PowerupType.GravityFlip:
                 slotIcon.sprite = gravityFlipSprite;
                 break;
-            // weitere Powerups später
+            case PowerupType.Freeze:
+                slotIcon.sprite = freezeSprite;
+                break;
         }
     }
 }

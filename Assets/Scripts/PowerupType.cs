@@ -1,6 +1,6 @@
 ﻿public enum PowerupType
 {
     None,
-    GravityFlip
-   
+    GravityFlip,
+    Freeze
 }
