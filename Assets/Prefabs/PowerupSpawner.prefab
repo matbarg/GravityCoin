@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  possibleTypes: 0100000002000000
+  possibleTypes: 010000000200000003000000
   lifeTime: 10
   respawnDelay: 6
   initialDelay: 15

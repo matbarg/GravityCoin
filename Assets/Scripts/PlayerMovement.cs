@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
-
+    
+    
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -28,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     private bool hasTouchedGroundSinceSwitch = true;
 
 	private bool isStaggered = false;
+    private PowerupHolder powerupHolder;
+    private float lastFallSpeed;
+    
 	[SerializeField] private float staggerDuration = 0.2f;
 	[SerializeField] private float knockbackForce = 10f;
 
@@ -46,7 +50,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     public AudioSource audioSource;
     public AudioClip jumpSound;
-
+    
+    [Header("Impact-Shockwave")]
+    public float shockwaveRadius = 8f;
+    public float visualShockwaveRadius = 4f;  
+    public float minForce = 15f;
+    public float maxForce = 35f;      
+    public float speedForFullPower = 20f;
+    public ShockwaveController shockwaveController;
+    
     private Animator animator;
 
     private SpriteRenderer[] sprites;
@@ -57,8 +69,14 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-
+        powerupHolder = GetComponent<PowerupHolder>();
         sprites = GetComponentsInChildren<SpriteRenderer>();
+        if (shockwaveController == null)
+        {
+            shockwaveController = FindFirstObjectByType<ShockwaveController>();
+        }
+        
+        
         originalColors = new Color[sprites.Length];
         for (int i = 0; i < sprites.Length; i++)
             originalColors[i] = sprites[i].color;
@@ -83,15 +101,90 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-    	if (InputBlocked) return;
-
+        if (InputBlocked) return;
         rb.linearVelocity = new Vector2(horizontal * speed * speedMultiplier, rb.linearVelocity.y);
+
+        bool wasGrounded = isGrounded;
         isGrounded = IsGrounded();
 
         if (isGrounded)
         {
             hasTouchedGroundSinceSwitch = true;
+
+            if (!wasGrounded && powerupHolder != null && powerupHolder.ImpactCharged)
+            {
+                if (DoShockwave())
+                {
+                    powerupHolder.ConsumeImpact();
+                }
+            }
         }
+
+        // GANZ AM ENDE: Geschwindigkeit für den nächsten Frame merken
+        lastFallSpeed = Mathf.Abs(rb.linearVelocity.y);
+    }
+    private bool DoShockwave()
+    {
+        float minFallSpeed = 26f;
+        float maxFallSpeed = 49f;
+
+        if (lastFallSpeed < minFallSpeed)
+        {
+            Debug.Log("Zu langsam für Shockwave: " + lastFallSpeed);
+            return false;
+        }
+        Debug.Log("Impact stark genug!");
+
+        if (shockwaveController != null)
+        {
+            Debug.Log("ShockwaveController gefunden!");
+            shockwaveController.PlayShockwave(
+                transform.position,
+                visualShockwaveRadius
+            );
+        }
+        else
+        {
+            Debug.LogError("KEIN ShockwaveController im PlayerMovement!");
+        }
+        float t = Mathf.Clamp01(
+            (lastFallSpeed - minFallSpeed) /
+            (maxFallSpeed - minFallSpeed)
+        );
+
+        float force = Mathf.Lerp(minForce, maxForce, t);
+
+        Debug.Log("Fallspeed: " + lastFallSpeed + " → t: " + t + " → Force: " + force);
+
+        Collider2D[] hits =
+            Physics2D.OverlapCircleAll(transform.position, shockwaveRadius);
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.gameObject == gameObject)
+                continue;
+
+            PlayerMovement other =
+                hit.GetComponentInParent<PlayerMovement>();
+
+            if (other != null && other != this)
+            {
+                float dist = Vector2.Distance(transform.position, other.transform.position);
+                float distFactor = 1f - Mathf.Clamp01(dist / shockwaveRadius);
+                float finalForce = force * (0.4f + 0.6f * distFactor);
+
+                other.TakeHit(transform.position, finalForce);
+
+                // Coin-Verlust: 1 Coin pro getroffenem Gegner
+                PlayerInventory targetInv = other.GetComponent<PlayerInventory>();
+                if (targetInv != null)
+                {
+                    targetInv.LoseCoins(1);
+                }
+            }
+        }
+
+        return true;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -203,17 +296,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-	public void TakeHit(Vector2 hitSourcePosition)
-	{
-    	if (isStaggered) return;
+    public void TakeHit(Vector2 hitSourcePosition, float customForce = -1f)
+    {
+        if (isStaggered) return;
+        isStaggered = true;
+        animator.SetTrigger("Hit");
 
-    	isStaggered = true;
+        float force = (customForce > 0f) ? customForce : knockbackForce;
 
-    	animator.SetTrigger("Hit");
-
-    	Vector2 direction = (Vector2)(transform.position - (Vector3)hitSourcePosition).normalized;
-    	rb.linearVelocity = Vector2.zero;
-    	rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        Vector2 direction = (Vector2)(transform.position - (Vector3)hitSourcePosition).normalized;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
 
     	// Treffer-Aufblinken
     	StartCoroutine(HitFlash());
@@ -271,5 +364,10 @@ public class PlayerMovement : MonoBehaviour
         if (animator != null) animator.speed = 1f;
         for (int i = 0; i < sprites.Length; i++)
             if (sprites[i] != null) sprites[i].color = originalColors[i];
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
     }
 }
