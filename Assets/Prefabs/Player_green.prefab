@@ -629,9 +629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6fe1d0d1434039a0218bd9c7ad9f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerupHolder
-  gravityFlipSprite: {fileID: 21300000, guid: 76889f48ceff08f4d8e4b06a88e0fa5f, type: 3}
-  freezeSprite: {fileID: 3058895691118293505, guid: 43be1a8260bb2804084bd9864b024b6f, type: 3}
-  impactSprite: {fileID: 21300000, guid: 8763f1b5203e16b4a871a1df8ccedf52, type: 3}
+  gravityFlipSprite: {fileID: 9011213135108779423, guid: 2a56fedbfbc117f41964536656e029cb, type: 3}
+  freezeSprite: {fileID: -6527010645765820549, guid: 338b6d032bf3945429e65e6f505ab277, type: 3}
+  impactSprite: {fileID: -4636115998730556093, guid: 76dbdfc937b895f498cbd694c476e3b2, type: 3}
   slotIcon: {fileID: 0}
 --- !u!1 &4831931256881221196
 GameObject:
