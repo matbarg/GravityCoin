@@ -10,16 +10,8 @@ public class PowerupHolder : MonoBehaviour
     [Header("Powerup-Sprites (pro Typ)")]
     public Sprite gravityFlipSprite;
     public Sprite freezeSprite;
-    public Sprite impactSprite;
     public Image slotIcon;
-    private bool impactCharged = false;
-    public bool ImpactCharged => impactCharged;
 
-// vom PlayerMovement aufgerufen, wenn die Shockwave ausgelöst wurde
-    public void ConsumeImpact()
-    {
-        impactCharged = false;
-    }
     
     // Wird vom Powerup-Objekt aufgerufen, wenn der Spieler es aufhebt.
     // Neues ersetzt immer das alte.
@@ -59,10 +51,6 @@ public class PowerupHolder : MonoBehaviour
             case PowerupType.Freeze:
                 PowerupEffects.FreezeNearestEnemy(gameObject);
                 break;
-            case PowerupType.Impact:
-                impactCharged = true;
-                break;
-
         }
     }
 
@@ -85,9 +73,6 @@ public class PowerupHolder : MonoBehaviour
                 break;
             case PowerupType.Freeze:
                 slotIcon.sprite = freezeSprite;
-                break;
-            case PowerupType.Impact:
-                slotIcon.sprite = impactSprite;
                 break;
         }
     }

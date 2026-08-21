@@ -2,6 +2,5 @@
 {
     None,
     GravityFlip,
-    Freeze,
-    Impact
+    Freeze
 }

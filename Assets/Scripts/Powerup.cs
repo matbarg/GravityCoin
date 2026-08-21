@@ -9,7 +9,7 @@ public class Powerup : MonoBehaviour
     [Header("Aussehen pro Typ")]
     public Sprite gravityFlipSprite;
     public Sprite freezeSprite;
-    public Sprite impactSprite;
+
 
 
     [Header("Audio")]
@@ -42,9 +42,6 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.Freeze:
                 sr.sprite = freezeSprite;
-                break;
-            case PowerupType.Impact:
-                sr.sprite = impactSprite;
                 break;
         }
     }
