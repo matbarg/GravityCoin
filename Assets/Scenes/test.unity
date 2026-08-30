@@ -3220,6 +3220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271982448}
   - component: {fileID: 271982449}
+  - component: {fileID: 271982450}
   m_Layer: 0
   m_Name: PortalGraph
   m_TagString: Untagged
@@ -3301,6 +3302,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &271982450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271982447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9a6cbe1c3e644ab638cc61e77048f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalVisual
+  portalGraphic: {fileID: 553526469}
+  spawnDuration: 0.2
 --- !u!1 &276231320
 GameObject:
   m_ObjectHideFlags: 0
@@ -15016,6 +15031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983748048}
   - component: {fileID: 983748050}
+  - component: {fileID: 983748051}
   m_Layer: 0
   m_Name: PortalGraphB
   m_TagString: Untagged
@@ -15097,6 +15113,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &983748051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983748047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9a6cbe1c3e644ab638cc61e77048f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalVisual
+  portalGraphic: {fileID: 1120193080}
+  spawnDuration: 0.2
 --- !u!1 &990937438
 GameObject:
   m_ObjectHideFlags: 0
@@ -20329,7 +20359,7 @@ PrefabInstance:
       objectReference: {fileID: 8051094998573956557, guid: c051ab644cef0784e8afe560e6f78906, type: 3}
     - target: {fileID: 1602926624500123817, guid: 637ec3a74eac4694cba53eefc8ea600b, type: 3}
       propertyPath: possibleTypes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1602926624500123817, guid: 637ec3a74eac4694cba53eefc8ea600b, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
@@ -20357,11 +20387,11 @@ PrefabInstance:
       objectReference: {fileID: 2042294860}
     - target: {fileID: 1602926624500123817, guid: 637ec3a74eac4694cba53eefc8ea600b, type: 3}
       propertyPath: 'possibleTypes.Array.data[0]'
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1602926624500123817, guid: 637ec3a74eac4694cba53eefc8ea600b, type: 3}
       propertyPath: 'possibleTypes.Array.data[1]'
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1602926624500123817, guid: 637ec3a74eac4694cba53eefc8ea600b, type: 3}
       propertyPath: 'possibleTypes.Array.data[2]'

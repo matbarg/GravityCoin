@@ -7,7 +7,7 @@ public class LeaderManager : MonoBehaviour
 {
     public TextMeshProUGUI leaderText; 
     public GameObject crown;           
-    public Vector3 crownOffset = new Vector3(0, 1.5f, 0); 
+    public Vector3 crownOffset = new Vector3(0.09f, 1.38f, 0); 
 
     private PlayerInventory[] allPlayerInventories;
     private PlayerInventory currentLeader;

@@ -2796,6 +2796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219722199}
   - component: {fileID: 219722200}
+  - component: {fileID: 219722201}
   m_Layer: 0
   m_Name: PortalGraphB
   m_TagString: Untagged
@@ -2877,6 +2878,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &219722201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219722198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9a6cbe1c3e644ab638cc61e77048f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalVisual
+  portalGraphic: {fileID: 902131161}
+  spawnDuration: 0.2
 --- !u!1 &221390643
 GameObject:
   m_ObjectHideFlags: 0
@@ -15279,7 +15294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LeaderManager
   leaderText: {fileID: 1657461087}
   crown: {fileID: 4959405166085832160}
-  crownOffset: {x: 0, y: 1.5, z: -1}
+  crownOffset: {x: 0.12, y: 1.38, z: -1}
 --- !u!114 &1022251184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21067,6 +21082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1421046870}
   - component: {fileID: 1421046871}
+  - component: {fileID: 1421046872}
   m_Layer: 0
   m_Name: PortalGraph
   m_TagString: Untagged
@@ -21148,6 +21164,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1421046872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421046869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9a6cbe1c3e644ab638cc61e77048f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalVisual
+  portalGraphic: {fileID: 2043373180}
+  spawnDuration: 0.2
 --- !u!1 &1425173293
 GameObject:
   m_ObjectHideFlags: 0
@@ -28632,15 +28662,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7657542688036987026, guid: 88f177ccb252b47ddbd77ecc4799fec7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7657542688036987026, guid: 88f177ccb252b47ddbd77ecc4799fec7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7657542688036987026, guid: 88f177ccb252b47ddbd77ecc4799fec7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7657542688036987026, guid: 88f177ccb252b47ddbd77ecc4799fec7, type: 3}
       propertyPath: m_LocalPosition.x
