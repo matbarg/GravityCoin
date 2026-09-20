@@ -11,6 +11,8 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask playerLayer;
     public int coinsLostOnHit = 2;
     [SerializeField] private GameObject hitboxVisual;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject arrowPrefab;
 	private bool isHitStopped = false;
     [Header("Audio")]
     public AudioSource audioSource;
@@ -19,11 +21,13 @@ public class PlayerCombat : MonoBehaviour
     public float maxAttackDuration = 0.5f;
 
     private PlayerMovement movement;
+    private WeaponHolder weaponHolder;
 
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         movement = GetComponent<PlayerMovement>();
+        weaponHolder = GetComponent<WeaponHolder>();
     }
 
     void Start()
@@ -38,6 +42,12 @@ public class PlayerCombat : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+            return;
+
+        if (isAttacking)
+            return;
+ 
         if (!context.performed || isAttacking) return;
 
      
@@ -49,16 +59,14 @@ public class PlayerCombat : MonoBehaviour
             KingOfCoinPlayer kp = GetComponent<KingOfCoinPlayer>();
             if (kp != null && kp.isCarrier) return;
         }
-
-        isAttacking = true;
-        if (audioSource != null && swingSound != null)
+        if (weaponHolder.currentWeapon == WeaponType.Sword)
         {
-            audioSource.PlayOneShot(swingSound);
+            SwordAttack();
         }
-        animator.SetTrigger("Attack");
-
-        CancelInvoke(nameof(EndAttack));
-        Invoke(nameof(EndAttack), maxAttackDuration);
+        else if (weaponHolder.currentWeapon == WeaponType.Bow)
+        {
+            BowAttack();
+        }
     }
 
     public void PerformAttack()
@@ -153,4 +161,29 @@ public class PlayerCombat : MonoBehaviour
     	Time.timeScale = 1f;
     	isHitStopped = false;
 	}
+
+    private void SwordAttack()
+    {
+        Debug.Log("Sword attack");
+        isAttacking = true;
+        if (audioSource != null && swingSound != null)
+        {
+            audioSource.PlayOneShot(swingSound);
+        }
+        animator.SetTrigger("Attack");
+
+        CancelInvoke(nameof(EndAttack));
+        Invoke(nameof(EndAttack), maxAttackDuration);
+    }
+
+    private void BowAttack()
+    {
+        Debug.Log("Bow Attack");
+
+        Instantiate(
+            arrowPrefab,
+            firePoint.position,
+            firePoint.rotation
+        );
+    }
 }

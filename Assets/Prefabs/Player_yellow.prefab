@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: -8914442041542642119}
   - component: {fileID: 1255285789782958920}
   - component: {fileID: 6233077594950076568}
+  - component: {fileID: 8992513218309056445}
   m_Layer: 7
   m_Name: Player_yellow
   m_TagString: Untagged
@@ -349,12 +350,6 @@ MonoBehaviour:
   hitParticleOffset: {x: 0, y: 0, z: 0}
   audioSource: {fileID: 606821238509174582}
   jumpSound: {fileID: 8300000, guid: fd3202bd2b5994b31959fa27355df2eb, type: 3}
-  shockwaveRadius: 8
-  visualShockwaveRadius: 4
-  minForce: 15
-  maxForce: 35
-  speedForFullPower: 20
-  shockwaveController: {fileID: 0}
 --- !u!82 &606821238509174582
 AudioSource:
   m_ObjectHideFlags: 0
@@ -709,8 +704,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerupHolder
   gravityFlipSprite: {fileID: 9011213135108779423, guid: 2a56fedbfbc117f41964536656e029cb, type: 3}
   freezeSprite: {fileID: -6527010645765820549, guid: 338b6d032bf3945429e65e6f505ab277, type: 3}
-  impactSprite: {fileID: -4636115998730556093, guid: 76dbdfc937b895f498cbd694c476e3b2, type: 3}
   slotIcon: {fileID: 0}
+--- !u!114 &8992513218309056445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756779142634574202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1002519a544d9291b4fcf48d7ae14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponHolder
+  currentWeapon: 0
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0

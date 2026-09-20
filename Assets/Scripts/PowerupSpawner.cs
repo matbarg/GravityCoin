@@ -77,7 +77,7 @@ public class PowerupSpawner : MonoBehaviour
         // Lebens-Timer starten: verschwindet, wenn keiner es nimmt
         StartCoroutine(LifeTimer());
 
-        Debug.Log("Powerup gespawnt an Punkt: " + randomIndex);
+       
     }
 
     IEnumerator LifeTimer()

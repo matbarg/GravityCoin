@@ -37,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
             scoreTextField.text = coins.ToString(); 
         }
 
-    	Debug.Log($"Spieler {id} hat jetzt {coins} Münzen.");
+    
 
         if (coins >= coins_for_win)
         {

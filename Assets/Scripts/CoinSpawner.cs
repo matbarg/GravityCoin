@@ -60,6 +60,5 @@ public class CoinSpawner : MonoBehaviour
             coinScript.regularSpawn = true;
         }
         
-        Debug.Log("Spawned Coin at Point: " + randomIndex);
     }
 }
