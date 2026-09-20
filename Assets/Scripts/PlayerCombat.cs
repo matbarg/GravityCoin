@@ -180,10 +180,12 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("Bow Attack");
 
-        Instantiate(
-            arrowPrefab,
-            firePoint.position,
-            firePoint.rotation
-        );
+        GameObject arrowObject = Instantiate(
+                arrowPrefab,
+                firePoint.position,
+                Quaternion.identity //firePoint.rotation
+            );
+        Arrow arrow = arrowObject.GetComponent<Arrow>();
+        arrow.Initialize((movement.IsFacingRight));
     }
 }
