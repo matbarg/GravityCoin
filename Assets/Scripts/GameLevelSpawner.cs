@@ -90,5 +90,19 @@ public class GameLevelSpawner : MonoBehaviour
             if (playerPowerupIcons != null && index < playerPowerupIcons.Length)
                 holder.slotIcon = playerPowerupIcons[index];
         }
+        
+    }
+    public void RespawnAtRandomPoint(GameObject player)
+    {
+        if (spawnPoints.Length == 0)
+            return;
+
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        player.transform.position = spawnPoints[randomIndex].position;
+
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
     }
 }

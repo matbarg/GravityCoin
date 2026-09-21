@@ -22,12 +22,14 @@ public class PlayerCombat : MonoBehaviour
 
     private PlayerMovement movement;
     private WeaponHolder weaponHolder;
+    private GameLevelSpawner levelSpawner;
 
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         movement = GetComponent<PlayerMovement>();
         weaponHolder = GetComponent<WeaponHolder>();
+        levelSpawner = FindFirstObjectByType<GameLevelSpawner>();
     }
 
     void Start()
@@ -48,8 +50,6 @@ public class PlayerCombat : MonoBehaviour
         if (isAttacking)
             return;
  
-        if (!context.performed || isAttacking) return;
-
      
         if (movement != null && movement.ControlsLocked) return;
 
@@ -103,6 +103,10 @@ public class PlayerCombat : MonoBehaviour
                 if (target != null)
                 {
                     target.LoseCoins(coinsLostOnHit);
+                }
+                if (levelSpawner != null)
+                {
+                    levelSpawner.RespawnAtRandomPoint(hit.gameObject);
                 }
             }
 
