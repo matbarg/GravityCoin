@@ -25,10 +25,6 @@ public class PlayerBoost : MonoBehaviour
     [Tooltip("Ab welchem Tempo man als 'laufend' gilt.")]
     public float standingThreshold = 0.5f;
 
-    [Header("Tastatur-Boost-Tasten")]
-    public Key keyboardLeftBoostKey = Key.LeftShift;
-    public Key keyboardRightBoostKey = Key.RightShift;
-
     [Header("UI")]
     public Image boostBar;  
 
@@ -43,12 +39,11 @@ public class PlayerBoost : MonoBehaviour
     private float tank = 1f;        
     private bool wasBoosting = false;
     private PlayerMovement movement;
-    private PlayerInput playerInput;
     private bool boostLocked = false;
+    private bool wantBoost = false;
     void Awake()
     {
         movement = GetComponent<PlayerMovement>();
-        playerInput = GetComponent<PlayerInput>();
 
         // Trail beim Start aus
         if (sprintTrail != null) sprintTrail.emitting = false;
@@ -70,8 +65,7 @@ public class PlayerBoost : MonoBehaviour
             SetTrail(false);
             return;
         }
-
-        bool wantBoost = ReadBoostInput();
+        
 
         // Wenn der Tank wieder mindestens 20 % erreicht hat,
         // wird der Boost erneut freigeschaltet.
@@ -134,26 +128,18 @@ public class PlayerBoost : MonoBehaviour
     }
 
     // Liest die Boost-Taste direkt vom gekoppelten Geraet des Spielers.
-    private bool ReadBoostInput()
-    {
-        if (playerInput == null) return false;
 
-        // Gamepad? -> L2 (linker Trigger)
-        foreach (var device in playerInput.devices)
+    public void Boost(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            if (device is Gamepad gp)
-                return gp.leftTrigger.isPressed;
+            wantBoost = true;
         }
 
-        // Tastatur -> je nach Schema die passende Taste
-        var kb = Keyboard.current;
-        if (kb == null) return false;
-
-        string scheme = playerInput.currentControlScheme;
-        if (scheme == "KeyBoardLeft")  return kb[keyboardLeftBoostKey].isPressed;
-        if (scheme == "KeyBoardRight") return kb[keyboardRightBoostKey].isPressed;
-
-        return false;
+        if (context.canceled)
+        {
+            wantBoost = false;
+        }
     }
 
     // Fuer spaeter: Auflade-Coins / Power-Ups koennen den Tank fuellen.

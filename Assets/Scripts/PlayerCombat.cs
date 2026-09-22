@@ -168,7 +168,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void SwordAttack()
     {
-        Debug.Log("Sword attack");
+     
         isAttacking = true;
         if (audioSource != null && swingSound != null)
         {
@@ -182,7 +182,6 @@ public class PlayerCombat : MonoBehaviour
 
     private void BowAttack()
     {
-        Debug.Log("Bow Attack");
 
         GameObject arrowObject = Instantiate(
                 arrowPrefab,

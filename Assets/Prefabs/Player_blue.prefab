@@ -573,6 +573,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c75456e6-1c32-4785-a5e8-44b5b5f7a848
     m_ActionName: Player/menu
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4068082831307554877}
+        m_TargetAssemblyTypeName: WeaponHolder, Assembly-CSharp
+        m_MethodName: SwitchWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 031ea6ca-bfab-4a00-8431-381f307d7678
+    m_ActionName: 'Player/WeaponSwitch[/DualShock4GamepadHID/buttonEast,/Keyboard/r,/Keyboard/comma]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6907633146124689076}
+        m_TargetAssemblyTypeName: PlayerBoost, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 09724000-e89f-4398-b09b-cf1fd73a7e47
+    m_ActionName: 'Player/Boost[/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID/leftTrigger,/Keyboard/shift,/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -688,8 +720,6 @@ MonoBehaviour:
   rechargeMoving: 0.05
   rechargeStanding: 0.25
   standingThreshold: 0.5
-  keyboardLeftBoostKey: 55
-  keyboardRightBoostKey: 7
   boostBar: {fileID: 0}
   sprintTrail: {fileID: 6092649370932378157}
   minimumRechargeToBoost: 0.2
@@ -721,6 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponHolder
   currentWeapon: 0
+  specialWeapon: 2
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0

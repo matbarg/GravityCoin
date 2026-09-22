@@ -32,6 +32,9 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("Pfeil hat einen Spieler getroffen: " + player.gameObject.name);
             player.TakeHit(transform.position);
+            isFlying = false;
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {

@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch",
+                    "name": "GravitySwitch",
                     "type": "Button",
                     "id": "856f1b01-b5ad-402e-a2d1-55902a1966a5",
                     "expectedControlType": "",
@@ -34,7 +34,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Bomb",
+                    "name": "WeaponSwitch",
+                    "type": "Button",
+                    "id": "031ea6ca-bfab-4a00-8431-381f307d7678",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
                     "type": "Button",
                     "id": "1cf354fd-bbf7-4f98-8be5-c0f546aff069",
                     "expectedControlType": "",
@@ -64,6 +73,15 @@
                     "name": "menu",
                     "type": "Button",
                     "id": "c75456e6-1c32-4785-a5e8-44b5b5f7a848",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "09724000-e89f-4398-b09b-cf1fd73a7e47",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -209,7 +227,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";Gamepad;KeyBoardLeft",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -243,7 +261,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoardRight",
-                    "action": "Switch",
+                    "action": "GravitySwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -254,18 +272,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoardLeft",
-                    "action": "Switch",
+                    "action": "GravitySwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "a1e352bf-21ba-4e28-84f1-4dced875dc76",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Switch",
+                    "action": "GravitySwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -276,7 +294,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoardLeft",
-                    "action": "Bomb",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -287,18 +305,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyBoardRight",
-                    "action": "Bomb",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "488ee00f-cf13-481c-8889-edaed5a3f8bb",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Bomb",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -316,10 +334,10 @@
                 {
                     "name": "",
                     "id": "24b950b4-2e12-41d4-8880-7d0a5e31041a",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";Gamepad;KeyBoardLeft",
                     "action": "UsePowerup",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -343,6 +361,94 @@
                     "processors": "",
                     "groups": ";KeyBoardRight",
                     "action": "UsePowerup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41438b07-42ba-46c1-8500-55c5111041ff",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "UsePowerup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d8afee3-f63a-4f6f-b582-43addebb7293",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "WeaponSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ce9f600-d491-4e9a-9f6e-1678ca96f16a",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardLeft",
+                    "action": "WeaponSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "905af4da-f1cc-40da-a4a9-d829f76bbea4",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardRight",
+                    "action": "WeaponSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c407e1ab-2819-475f-abdd-14a1e5fb8480",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecda809f-a3e9-4398-bfc4-797e2eafede1",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7101746f-5770-4f0e-8e32-5d5f06288eb3",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardLeft",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "618002f8-4461-4d84-aa42-9ed9b7bc4bbd",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoardRight",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

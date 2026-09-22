@@ -107,6 +107,7 @@ Transform:
   m_Children:
   - {fileID: 3774662612499179937}
   - {fileID: 4701893228609062797}
+  - {fileID: 8673875288680011967}
   - {fileID: 4184745545214933596}
   - {fileID: 2228635599182046494}
   - {fileID: 5121187821552039948}
@@ -494,6 +495,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c75456e6-1c32-4785-a5e8-44b5b5f7a848
     m_ActionName: Player/menu
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7185398552069492439}
+        m_TargetAssemblyTypeName: WeaponHolder, Assembly-CSharp
+        m_MethodName: SwitchWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 031ea6ca-bfab-4a00-8431-381f307d7678
+    m_ActionName: 'Player/WeaponSwitch[/DualShock4GamepadHID/buttonEast,/Keyboard/r,/Keyboard/comma]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1004413861885202235}
+        m_TargetAssemblyTypeName: PlayerBoost, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 09724000-e89f-4398-b09b-cf1fd73a7e47
+    m_ActionName: 'Player/Boost[/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID/leftTrigger,/Keyboard/shift,/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -534,6 +567,8 @@ MonoBehaviour:
     m_Bits: 128
   coinsLostOnHit: 2
   hitboxVisual: {fileID: 4831931256881221196}
+  firePoint: {fileID: 8673875288680011967}
+  arrowPrefab: {fileID: 4166010332613930474, guid: 369b03f132fd0f34a8dc9a7084e5b00a, type: 3}
   audioSource: {fileID: -5116897442592393926}
   swingSound: {fileID: 8300000, guid: 4e754089fa3264ae18ac07ca1ee1a52b, type: 3}
   maxAttackDuration: 0.5
@@ -607,8 +642,6 @@ MonoBehaviour:
   rechargeMoving: 0.05
   rechargeStanding: 0.25
   standingThreshold: 0.5
-  keyboardLeftBoostKey: 55
-  keyboardRightBoostKey: 7
   boostBar: {fileID: 0}
   sprintTrail: {fileID: 4127779468991625019}
   minimumRechargeToBoost: 0.2
@@ -640,6 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponHolder
   currentWeapon: 0
+  specialWeapon: 2
 --- !u!1 &4831931256881221196
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +765,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5673602942831807504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8673875288680011967}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8673875288680011967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5673602942831807504}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.173, y: -0.267, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3764650413000385903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7354194840581144143
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿public enum WeaponType{
     Sword,
-    Bow
+    Bow,
+    None,
 }
