@@ -3,13 +3,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
     public class WeaponHolder : MonoBehaviour
     {
-
+        [SerializeField] private Animator animator; 
         public WeaponType currentWeapon = WeaponType.Sword;
         public WeaponType specialWeapon = WeaponType.None;
+
+        
+
+        
+        private void UpdateAnimatorWeapon()
+        {
+            animator.SetInteger("Weapon", (int)currentWeapon);
+        }
         public void EquipWeapon(WeaponType newWeapon)
         {
             specialWeapon = newWeapon;
             currentWeapon = newWeapon;
+            
+            UpdateAnimatorWeapon();
         }
  
 
@@ -29,7 +39,10 @@ using UnityEngine.InputSystem;
             {
                 currentWeapon = WeaponType.Sword;
             }
+            UpdateAnimatorWeapon();
 
             Debug.Log("Aktuelle Waffe: " + currentWeapon);
         }
+
+  
     }
