@@ -5090,6 +5090,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4423223291832102647, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e668beb7827544959dfdc4e2cc6f9ba8, type: 2}
     - target: {fileID: 4423223292004880404, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -5162,6 +5166,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4423223292375516565, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea3260c1c7b64a99b8c6e0cf538de5c3, type: 2}
     - target: {fileID: 4423223292839307368, guid: 0a28258e336d4c899384bf74da56d19e, type: 3}
       propertyPath: m_SortingOrder
       value: 10

@@ -223,11 +223,9 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
 
-    	// Treffer-Aufblinken
     	StartCoroutine(HitFlash());
 
-    	// Treffer-Partikel - Kopie SOFORT aktivieren, egal wie das Prefab
-    	// gespeichert ist (sonst spielt ein inaktives Prefab nichts ab)
+
     	if (hitParticlePrefab != null)
     	{
         	GameObject fx = Instantiate(

@@ -106,7 +106,7 @@ public class PlayerCombat : MonoBehaviour
                 }
                 if (levelSpawner != null)
                 {
-                    levelSpawner.RespawnAtRandomPoint(hit.gameObject);
+                    levelSpawner.RespawnAtRandomPointDelayed(hit.gameObject,0.7f);
                 }
             }
 

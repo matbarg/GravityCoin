@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class GameLevelSpawner : MonoBehaviour
 {
@@ -104,5 +105,16 @@ public class GameLevelSpawner : MonoBehaviour
 
         if (rb != null)
             rb.linearVelocity = Vector2.zero;
+    }
+    public void RespawnAtRandomPointDelayed(GameObject player, float delay)
+    {
+        StartCoroutine(RespawnDelayed(player, delay));
+    }
+
+    private IEnumerator RespawnDelayed(GameObject player, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        RespawnAtRandomPoint(player);
     }
 }

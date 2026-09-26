@@ -3,7 +3,9 @@
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float speed = 12f;
+    [SerializeField] private int coinsLostOnHit = 1;
 
+    private GameLevelSpawner levelSpawner;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool isFlying = true;
@@ -12,6 +14,8 @@ public class Arrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        levelSpawner = FindFirstObjectByType<GameLevelSpawner>();
     }
 
     public void Initialize(bool facingRight)
@@ -32,9 +36,21 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("Pfeil hat einen Spieler getroffen: " + player.gameObject.name);
             player.TakeHit(transform.position);
+            PlayerInventory inventory = collision.collider.GetComponentInParent<PlayerInventory>();
+
+            if (inventory != null)
+            {
+                inventory.LoseCoins(coinsLostOnHit);
+            }
+
+            if (levelSpawner != null)
+            {
+                levelSpawner.RespawnAtRandomPointDelayed(player.gameObject, 0.7f);
+            }
             isFlying = false;
             rb.linearVelocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Kinematic;
+            Destroy(gameObject);
         }
         else
         {
