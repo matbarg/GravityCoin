@@ -110,11 +110,34 @@ public class GameLevelSpawner : MonoBehaviour
     {
         StartCoroutine(RespawnDelayed(player, delay));
     }
-
     private IEnumerator RespawnDelayed(GameObject player, float delay)
     {
-        yield return new WaitForSeconds(delay);
+        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+        if (movement != null)
+        {
+            movement.SetControlsLocked(true);
+        }
+
+        // Knockback kurz sichtbar lassen
+        yield return new WaitForSeconds(0.15f);
+
+        // Danach Bewegung stoppen
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        // Restliche Zeit bis zum Respawn warten
+        yield return new WaitForSeconds(delay - 0.15f);
 
         RespawnAtRandomPoint(player);
+
+        if (movement != null)
+        {
+            movement.SetControlsLocked(false);
+        }
     }
+ 
 }

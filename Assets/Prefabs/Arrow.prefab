@@ -179,4 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815d58131b0a4d9e875a3ca5820512cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
-  speed: 12
+  speed: 25
+  coinsLostOnHit: 1

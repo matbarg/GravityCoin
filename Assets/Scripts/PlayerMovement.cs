@@ -155,6 +155,16 @@ public class PlayerMovement : MonoBehaviour
 		if (InputBlocked) { horizontal = 0f; return; }
         horizontal = context.ReadValue<Vector2>().x;
     }
+    
+    public void SetControlsLocked(bool locked)
+    {
+        controlsLocked = locked;
+
+        if (locked)
+        {
+            horizontal = 0f;
+        }
+    }
 
     public void SwitchGravity(InputAction.CallbackContext context)
     {

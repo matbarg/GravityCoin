@@ -2,7 +2,7 @@
 
 public class Arrow : MonoBehaviour
 {
-    [SerializeField] private float speed = 12f;
+    [SerializeField] private float speed = 25f;
     [SerializeField] private int coinsLostOnHit = 1;
 
     private GameLevelSpawner levelSpawner;
@@ -10,12 +10,15 @@ public class Arrow : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isFlying = true;
 
+    private Collider2D arrowCollider;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         levelSpawner = FindFirstObjectByType<GameLevelSpawner>();
+        arrowCollider = GetComponent<Collider2D>();
     }
 
     public void Initialize(bool facingRight)
@@ -28,8 +31,7 @@ public class Arrow : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isFlying)
-            return;
+ 
         PlayerMovement player = collision.collider.GetComponentInParent<PlayerMovement>();
 
         if (player != null)
@@ -58,7 +60,39 @@ public class Arrow : MonoBehaviour
             isFlying = false;
             rb.linearVelocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Kinematic;
+            arrowCollider.isTrigger = true;
             Debug.Log("Pfeil ist jetzt: " + rb.bodyType);
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger berührt von: " + other.gameObject.name);
+
+        if (isFlying)
+            return;
+
+        WeaponHolder weaponHolder =
+            other.GetComponentInParent<WeaponHolder>();
+
+        if (weaponHolder != null)
+        {
+            Debug.Log("WeaponHolder gefunden!");
+
+            bool ammoAdded = weaponHolder.AddBowAmmo();
+
+            Debug.Log("Ammo aufgenommen: " + ammoAdded);
+
+            if (ammoAdded)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            Debug.Log("Kein WeaponHolder gefunden.");
+        }
+    }
+    
+    
 }

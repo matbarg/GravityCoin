@@ -182,7 +182,11 @@ public class PlayerCombat : MonoBehaviour
 
     private void BowAttack()
     {
-
+        if (!weaponHolder.UseBowAmmo())
+        {
+            return;
+        }
+        
         GameObject arrowObject = Instantiate(
                 arrowPrefab,
                 firePoint.position,
