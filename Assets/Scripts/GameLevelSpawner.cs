@@ -21,6 +21,9 @@ public class GameLevelSpawner : MonoBehaviour
     [Header("Powerup")]
     [Tooltip("Powerup-Icon pro Spieler (Index 0 = Spieler 1). UI Images im Panel.")]
     public Image[] playerPowerupIcons;
+    
+    [Header("Weapon UI")]
+    public PlayerWeaponUI[] playerWeaponUIs;
 
     void Start()
     {
@@ -90,6 +93,14 @@ public class GameLevelSpawner : MonoBehaviour
         {
             if (playerPowerupIcons != null && index < playerPowerupIcons.Length)
                 holder.slotIcon = playerPowerupIcons[index];
+        }
+        WeaponHolder weaponHolder = player.GetComponent<WeaponHolder>();
+
+        if (weaponHolder != null &&
+            playerWeaponUIs != null &&
+            index < playerWeaponUIs.Length)
+        {
+            weaponHolder.weaponUI = playerWeaponUIs[index];
         }
         
     }

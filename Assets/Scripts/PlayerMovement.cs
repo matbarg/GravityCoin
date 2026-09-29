@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFacingRight = false;
     public bool IsFacingRight => isFacingRight;
+    public float GravityDirection => gravityDirection;
     private float gravityDirection = 1f;
     private bool isGrounded;
 

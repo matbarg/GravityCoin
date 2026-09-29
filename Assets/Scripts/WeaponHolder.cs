@@ -1,24 +1,35 @@
-﻿using System;
-using NUnit.Framework.Constraints;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
     public class WeaponHolder : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private int bowMaxAmmo = 3;
-        private int bowAmmo;
-
-        public int BowAmmo => bowAmmo;
         
         public WeaponType currentWeapon = WeaponType.Sword;
         public WeaponType specialWeapon = WeaponType.None;
-
-        
+        public PlayerWeaponUI weaponUI;
+        private ArrowType[] bowAmmoSlots = new ArrowType[3];
 
         
         private void UpdateAnimatorWeapon()
         {
             animator.SetInteger("Weapon", (int)currentWeapon);
+            
+            if (weaponUI != null)
+            {
+                weaponUI.SetWeapon(currentWeapon);
+            }
+ 
+            
+        }
+        private void UpdateAmmoUI()
+        {
+            if (weaponUI == null)
+                return;
+
+            for (int i = 0; i < bowAmmoSlots.Length; i++)
+            {
+                weaponUI.SetAmmoSlot(i, bowAmmoSlots[i]);
+            }
         }
         public void EquipWeapon(WeaponType newWeapon)
         {
@@ -27,10 +38,14 @@ using UnityEngine.InputSystem;
 
             if (newWeapon == WeaponType.Bow)
             {
-                bowAmmo = bowMaxAmmo;
-                Debug.Log("Bow Ammo: " + bowAmmo);
+                for (int i = 0; i < bowAmmoSlots.Length; i++)
+                {
+                    bowAmmoSlots[i] = ArrowType.Normal;
+                }
+                
             }
             UpdateAnimatorWeapon();
+            UpdateAmmoUI(); 
         }
  
 
@@ -55,33 +70,41 @@ using UnityEngine.InputSystem;
             Debug.Log("Aktuelle Waffe: " + currentWeapon);
         }
         
-        public bool UseBowAmmo()
+        public ArrowType UseBowAmmo()
         {
-            if (bowAmmo <= 0)
+            for (int i = 0; i < bowAmmoSlots.Length; i++)
             {
-                Debug.Log("Keine Pfeile mehr");
-                return false;
+                if (bowAmmoSlots[i] != ArrowType.None)
+                {
+                    ArrowType usedArrow = bowAmmoSlots[i];
+
+                    bowAmmoSlots[i] = ArrowType.None;
+                    UpdateAmmoUI();
+                    return usedArrow;
+                }
             }
 
-            bowAmmo--;
-            Debug.Log("Amo: " + bowAmmo);
-            return true;
+            return ArrowType.None;
         }
 
-        public bool AddBowAmmo()
+        public bool AddBowAmmo(ArrowType type)
         {
             if (specialWeapon != WeaponType.Bow)
             {
                 return false;
             }
 
-            if (bowAmmo >= bowMaxAmmo)
+            for (int i = 0; i < bowAmmoSlots.Length; i++)
             {
-                return false;
+                if (bowAmmoSlots[i] == ArrowType.None)
+                {
+                    bowAmmoSlots[i] = type;
+                    UpdateAmmoUI();
+                    return true;
+                }
             }
 
-            bowAmmo++;
-            return true;
+            return false;
         }
   
     }

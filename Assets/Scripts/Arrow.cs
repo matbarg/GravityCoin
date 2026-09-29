@@ -4,11 +4,15 @@ public class Arrow : MonoBehaviour
 {
     [SerializeField] private float speed = 25f;
     [SerializeField] private int coinsLostOnHit = 1;
-
+    [SerializeField] private float arrowGravity = 1f;
+    [SerializeField] private float pickupLifetime = 20f;
+    
+    
     private GameLevelSpawner levelSpawner;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool isFlying = true;
+    private ArrowType arrowType;
 
     private Collider2D arrowCollider;
 
@@ -20,14 +24,37 @@ public class Arrow : MonoBehaviour
         levelSpawner = FindFirstObjectByType<GameLevelSpawner>();
         arrowCollider = GetComponent<Collider2D>();
     }
-
-    public void Initialize(bool facingRight)
+    
+    private void Update()
     {
-        float direction = facingRight ? 1f : -1f;
+        if (!isFlying)
+            return;
 
+        Vector2 velocity = rb.linearVelocity;
+
+        float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    public void Initialize(bool facingRight, float gravityDirection, ArrowType type)
+    {
+        arrowType = type;
+        float direction;
+        if (facingRight)
+        {
+            direction = 1f;
+        }
+        else
+        {
+            direction = -1f;
+        } 
+
+        
         rb.linearVelocity = new Vector2(direction * speed, 0f);
+        rb.gravityScale = arrowGravity * gravityDirection;
 
-        spriteRenderer.flipX = !facingRight;
+        spriteRenderer.flipX = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,7 +88,7 @@ public class Arrow : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Kinematic;
             arrowCollider.isTrigger = true;
-            Debug.Log("Pfeil ist jetzt: " + rb.bodyType);
+           Destroy(gameObject, pickupLifetime); 
         }
     }
     
@@ -79,7 +106,7 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("WeaponHolder gefunden!");
 
-            bool ammoAdded = weaponHolder.AddBowAmmo();
+            bool ammoAdded = weaponHolder.AddBowAmmo(arrowType);
 
             Debug.Log("Ammo aufgenommen: " + ammoAdded);
 

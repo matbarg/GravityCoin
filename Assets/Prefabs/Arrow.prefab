@@ -181,3 +181,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
   speed: 25
   coinsLostOnHit: 1
+  arrowGravity: 1
+  pickupLifetime: 20

@@ -13,6 +13,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject hitboxVisual;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private float bowCooldown = 0.5f;
+    private float nextBowShotTime = 0f;
+    
 	private bool isHitStopped = false;
     [Header("Audio")]
     public AudioSource audioSource;
@@ -182,10 +185,18 @@ public class PlayerCombat : MonoBehaviour
 
     private void BowAttack()
     {
-        if (!weaponHolder.UseBowAmmo())
+ 
+        if (Time.time < nextBowShotTime)
         {
             return;
         }
+        ArrowType arrowType = weaponHolder.UseBowAmmo();
+        if (arrowType == ArrowType.None)
+        {
+            return;
+        }
+        
+        nextBowShotTime = Time.time + bowCooldown;
         
         GameObject arrowObject = Instantiate(
                 arrowPrefab,
@@ -193,6 +204,10 @@ public class PlayerCombat : MonoBehaviour
                 Quaternion.identity //firePoint.rotation
             );
         Arrow arrow = arrowObject.GetComponent<Arrow>();
-        arrow.Initialize((movement.IsFacingRight));
+        arrow.Initialize(
+            movement.IsFacingRight,
+            movement.GravityDirection,
+            arrowType
+            );
     }
 }
