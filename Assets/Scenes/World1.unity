@@ -15419,7 +15419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1001560811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17840,7 +17840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1134204837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22693,7 +22693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1427412233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22800,9 +22800,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1430964264}
-  - component: {fileID: 1430964263}
   - component: {fileID: 1430964262}
   - component: {fileID: 1430964265}
+  - component: {fileID: 1430964263}
   m_Layer: 0
   m_Name: BowPickup
   m_TagString: Untagged
